@@ -1,0 +1,63 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.text{
+  font-family: $fuente_base;
+}
+
+.title{
+  font-family: $fuente_titulos;
+  color: $principal;
+  .with-borders{
+    -webkit-text-stroke: 3px $principal;
+    color: transparent;
+  }
+}
+
+.btn{
+  border: none;
+  font-family: $fuente_base;
+  font-size: 1rem;
+  font-weight: 200;
+  border-radius: .6rem;
+  height: 3rem;
+  padding: 0 2rem;
+  letter-spacing: .1rem;
+  cursor: pointer;
+  @include tablet{
+    font-size: .8rem;
+    height: 2.5rem;
+  }
+}
+
+.btn-border{
+  background-color: transparent;
+  border: 1px solid $principal;
+  color: $blanco;
+}
+
+.btn-background{
+  background-color: $principal;
+  color: $negro;
+}
+
+.btn1{
+  border: none;
+  background-color: $principal;
+  color: $blanco;
+  &:hover{
+    background-color: transparent;
+    border: 1px solid $principal;
+    color: $negro;
+    font-weight: 500;
+  }
+  
+}
