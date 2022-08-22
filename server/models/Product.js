@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
-const ProductSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
     title:{
         type: String,
         required: true
@@ -39,4 +39,4 @@ const ProductSchema = new mongoose.Schema({
     sizes: [String]
 })
 
-module.exports = mongoose.Model('Product', ProductSchema)
+module.exports = mongoose.model('Product', productSchema)

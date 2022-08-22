@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const routes = require('./routes/index.js')
+require('./config/database.js')
 
 const app = express()
 
