@@ -9,4 +9,4 @@ mongoose.connection.on('error', (error)=>{
     console.log(`Ha ocurrido un problema al intentar conectar con la base de datos: ${error}`)
 })
 
-require('../models/Product.js')
+require('../models/Product')
