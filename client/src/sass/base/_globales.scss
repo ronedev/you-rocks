@@ -37,21 +37,19 @@ a{
 .title{
   font-family: $fuente_titulos;
   color: $principal;
-  .with-borders{
-    -webkit-text-stroke: 3px $principal;
+  &.with-borders{
+    text-shadow: -1px -1px 0 $principal, 1px -1px 0 $principal, -1px 1px 0 $principal, 1px 1px 0 $principal;
     color: transparent;
   }
 }
 
 .btn{
+  display: block;
   border: none;
   font-family: $fuente_base;
-  font-size: 1rem;
-  font-weight: 200;
-  border-radius: .6rem;
-  height: 3rem;
-  padding: 0 2rem;
-  letter-spacing: .1rem;
+  font-size: 1.3rem;
+  font-weight: 900;
+  padding: .8rem 3rem;
   cursor: pointer;
   @include tablet{
     font-size: .8rem;
@@ -61,8 +59,12 @@ a{
 
 .btn-border{
   background-color: transparent;
-  border: 1px solid $principal;
+  border: 2px solid $principal;
   color: $blanco;
+  text-transform: uppercase;
+  &:hover{
+    color: $principal;
+  }
 }
 
 .btn-background{
