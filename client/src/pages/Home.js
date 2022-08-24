@@ -1,10 +1,11 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
     console.log('home')
   return (
     <>
-      <div style={{color: 'white'}}>Home</div>
+      <Navbar />
     </>
   );
 };
