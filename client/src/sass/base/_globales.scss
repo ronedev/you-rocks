@@ -71,16 +71,3 @@ a{
   background-color: $principal;
   color: $negro;
 }
-
-.btn1{
-  border: none;
-  background-color: $principal;
-  color: $blanco;
-  &:hover{
-    background-color: transparent;
-    border: 1px solid $principal;
-    color: $negro;
-    font-weight: 500;
-  }
-  
-}

@@ -1,0 +1,42 @@
+.banner{
+    width: 100%;
+    height: 20rem;
+    position: relative;
+    overflow: hidden;
+    p{
+        font-family: $fuente_titulos;
+        font-size: 4rem;
+        color: $principal;
+        position: absolute;
+        width: 350%;
+    }
+    .left{
+        color: #0e0e0e;
+        text-shadow: -1px -1px 0 $principal, 1px -1px 0 $principal, -1px 1px 0 $principal, 1px 1px 0 $principal;
+        top: 35%;
+        animation: 8s moveRight ease-in-out;
+        left: -90%;
+    }
+    .right{
+        animation: 8s moveLeft ease-in-out;
+        left: -120%;
+    }
+}
+
+@keyframes moveRight {
+    from{
+        left: -250%;
+    }
+    to{
+        left: -90%;
+    }
+}
+
+@keyframes moveLeft {
+    from{
+        left: 60%;
+    }
+    to{
+        left: -120%;
+    }
+}

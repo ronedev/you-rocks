@@ -1,9 +1,13 @@
 .navbar{
+    position: sticky;
+    top: 0;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1.5rem 4rem;
+    background-color: #0e0e0e;
+    z-index: 10;
     .enlaces{
         display: flex;
         align-items: center;
