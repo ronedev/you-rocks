@@ -1,6 +1,6 @@
 .banner{
     width: 100%;
-    height: 20rem;
+    height: 10rem;
     position: relative;
     overflow: hidden;
     p{
@@ -13,7 +13,6 @@
     .left{
         color: #0e0e0e;
         text-shadow: -1px -1px 0 $principal, 1px -1px 0 $principal, -1px 1px 0 $principal, 1px 1px 0 $principal;
-        top: 35%;
         animation: 8s moveRight ease-in-out;
         left: -90%;
     }

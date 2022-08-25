@@ -1,11 +1,12 @@
 import React from 'react'
 import modelImage from '../images/fondo.png'
+import ItemCard from './ItemCard'
 
 const Header = () => {
   return (
     <header className='header'>
         <div className="randomCard">
-            <div style={{width: '350px', height: '450px', backgroundColor: 'white'}}>s</div>
+            <ItemCard />
             <a href="/products" className='btn btn-border'>Go to store</a>
         </div>
         <div className="imageAndTitle">

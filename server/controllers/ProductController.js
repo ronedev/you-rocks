@@ -15,3 +15,13 @@ exports.getAllProducts = async (req, res)=>{
         return res.status(error.code).send(error.message)
     }
 }
+
+exports.getOfferedProducts = async (req, res)=>{
+    try{
+        const products = await Product.find({offer: true}).lean()
+        if(products) return res.status(200).json(products)
+    }catch(error){
+        console.log(error)
+        return res.status(error.code).send(error.message)
+    }
+}
