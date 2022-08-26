@@ -1,24 +1,38 @@
-import React, {useEffect, useState} from "react";
-import { getProducts } from "../services";
+import React, { useEffect, useState } from "react";
+import {useSwipeable} from 'react-swipeable'
+import { getProducts, handleDrag } from "../services";
 import ItemCard from "./ItemCard";
 
 const Offers = () => {
-  const [loading, setLoading] = useState(false)
-  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [sliderItemSelected, setSliderItemSelected] = useState(0);
 
-  useEffect(()=>{
-    async function loadProducts(){
-      setLoading(true)
-      const response = await getProducts()
-      
-      if(response.status === 200){
-        setProducts(response.data)
-        setLoading(false)
+  const handlers = useSwipeable({
+    onSwipedLeft: (e) =>
+      sliderItemSelected !== products.length - 1
+        ? setSliderItemSelected((prev) => prev + 1)
+        : null,
+    onSwipedRight: (e) =>
+      sliderItemSelected !== 0 ? setSliderItemSelected((prev) => prev - 1) : null,
+    swipeDuration: 500,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
+  useEffect(() => {
+    async function loadProducts() {
+      setLoading(true);
+      const response = await getProducts();
+
+      if (response.status === 200) {
+        setProducts(response.data);
+        setLoading(false);
       }
     }
 
-    loadProducts()
-  }, [])
+    loadProducts();
+  }, []);
 
   return (
     <section className="container">
@@ -33,11 +47,33 @@ const Offers = () => {
       </div>
       {loading ? (
         <p>Esta cargando...</p>
-      ):
-        products.map(item => (
-          <ItemCard item={item} />
-        ))
-      }
+      ) : (
+        <>
+          <div className="slider">
+            {products.map((item, idx) => (
+              <div
+                className={
+                  idx === sliderItemSelected
+                    ? "slide-item selected"
+                    : idx === sliderItemSelected - 1
+                    ? "slide-item previuos"
+                    : idx === sliderItemSelected + 1
+                    ? "slide-item next"
+                    : "slide-item"
+                }
+                {...(idx === sliderItemSelected && handlers)}
+              >
+                <ItemCard item={item} />
+              </div>
+            ))}
+          </div>
+          <div className="dot-container">
+                {products.map((item, idx)=>(
+                  <div className={idx === sliderItemSelected ? "dot selected" : "dot"} onClick={()=> setSliderItemSelected(idx)} ></div>
+                ))}
+          </div>
+        </>
+      )}
       <div className="banner">
         <p className="left">
           {" "}
