@@ -25,3 +25,17 @@ exports.getOfferedProducts = async (req, res)=>{
         return res.status(error.code).send(error.message)
     }
 }
+
+exports.getRandomProduct = async (req, res, next)=> {
+    try {
+        const totalDocs = await Product.countDocuments().lean()
+        const random = Math.floor(Math.random() * totalDocs)
+    
+        const randomProduct = await Product.findOne().skip(random).lean()
+    
+        if(randomProduct) return res.status(200).json(randomProduct)
+    } catch (error) {
+        console.log(error)
+        return res.status(error.code).send(error.message)
+    }
+}

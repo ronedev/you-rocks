@@ -12,6 +12,9 @@ router.get('/product/get', productController.getAllProducts)
 //Obteenr los productos en oferta
 router.get('/product/get-offered', productController.getOfferedProducts)
 
+//Obteenr los productos en oferta
+router.get('/product/get-random', productController.getRandomProduct)
+
 //Agregar producto
 router.post('/product/add', productController.addNewProduct)
 
