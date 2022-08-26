@@ -74,6 +74,9 @@ const Offers = () => {
           </div>
         </>
       )}
+      <div className="container" style={{marginTop: '3rem'}}>
+        <a href="/products" className="btn btn-border">More products</a>
+      </div>
       <div className="banner">
         <p className="left">
           {" "}
