@@ -11,3 +11,15 @@ export async function getProducts() {
     console.log(error);
   }
 }
+
+export async function getRandomProduct(){
+  try {
+    const response = await axios({
+      url: `${process.env.REACT_APP_BASE_URL}/product/get-random`,
+      method: "GET",
+    })
+    return response
+  } catch (error) {
+    console.log(error)
+  }
+}

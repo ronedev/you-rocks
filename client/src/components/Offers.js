@@ -4,7 +4,7 @@ import { getProducts, handleDrag } from "../services";
 import ItemCard from "./ItemCard";
 
 const Offers = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [sliderItemSelected, setSliderItemSelected] = useState(0);
 
