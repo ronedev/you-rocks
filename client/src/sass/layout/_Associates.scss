@@ -3,4 +3,11 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 4rem;
     margin: 8rem 0;
+    img{
+        transition: all .8s ease;
+    }
+    img:hover{
+        transform: scale(1.2);
+        filter: brightness(500%);
+    }
 }
