@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import modelImage from '../images/fondo.png'
-import { getRandomProduct } from '../services';
+import modelImage from '../../images/fondo.png'
+import { getRandomProduct } from '../../services';
 import ItemCard from './ItemCard'
 
 const Header = () => {
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState();
-
-  console.log(product)
   
   useEffect(()=>{
     async function loadRandomProduct(){

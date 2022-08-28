@@ -1,9 +1,9 @@
 import React from "react";
-import Associates from "../components/Associates";
+import Associates from "../components/Home/Associates";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Header from "../components/Home/Header";
 import Navbar from "../components/Navbar";
-import Offers from "../components/Offers";
+import Offers from "../components/Home/Offers";
 
 const Home = () => {
   return (

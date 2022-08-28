@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {useSwipeable} from 'react-swipeable'
-import { getProducts, handleDrag } from "../services";
+import { getProducts } from "../../services";
 import ItemCard from "./ItemCard";
 
 const Offers = () => {
