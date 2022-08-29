@@ -1,0 +1,20 @@
+.filters-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .btn{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+    .btn-border{
+        text-transform: none;
+    }
+    input{
+        background-color: transparent;
+        border: none;
+        color: $blanco;
+        outline: none;
+    }
+}
