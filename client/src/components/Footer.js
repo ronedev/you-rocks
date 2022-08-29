@@ -37,7 +37,7 @@ const Footer = () => {
             <button className='btn btn-border'>More info</button>
         </section>
         <section className='subscribe'>
-            <h3>Suscribite y recibí informaión exclusiva</h3>
+            <h3>Suscribite y recibí información exclusiva</h3>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, nulla sint sit ab asperiores recusandae vitae repellendus facere possimus amet deleniti, necessitatibus reiciendis voluptatibus nam impedit aut omnis commodi pariatur.</p>
             <div className="btn-container">
                 <input type="text" className='btn btn-border'/>

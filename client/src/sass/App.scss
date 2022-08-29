@@ -6,8 +6,13 @@
 
 //Layouts
 @import './layout/Navbar';
-@import './layout/ItemCardHome';
-@import './layout/Header';
-@import './layout/Offers';
-@import './layout/Associates';
 @import './layout/Footer';
+
+//Home Page
+@import './layout/Home/ItemCardHome';
+@import './layout/Home/Header';
+@import './layout/Home/Offers';
+@import './layout/Home/Associates';
+
+//Store page
+@import './layout/Store/Header';
