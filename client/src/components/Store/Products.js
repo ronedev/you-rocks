@@ -3,6 +3,7 @@ import searchIcon from '../../images/icons/search.png'
 import filterIcon from '../../images/icons/filter.png'
 import downArrowIcon from '../../images/icons/down-arrow.png'
 import { ProductContext } from '../../context/ProductsContext'
+import ProductCard from './ProductCard'
 
 const Products = () => {
     const {products, getAllProducts} = useContext(ProductContext)
@@ -22,7 +23,7 @@ const Products = () => {
         </div>
         <div className="products-grid">
             {products.map(product => (
-                'skere'
+                <ProductCard product={product}/>
             ))}
         </div>
     </section>

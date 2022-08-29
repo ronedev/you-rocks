@@ -1,3 +1,9 @@
+.products-container{
+    width: 100%;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+}
 .filters-container{
     width: 100%;
     display: flex;
@@ -17,4 +23,13 @@
         color: $blanco;
         outline: none;
     }
+}
+
+.products-grid{
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem 0;
 }

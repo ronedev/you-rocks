@@ -2,17 +2,24 @@ import React from 'react'
 
 const ProductCard = ({product}) => {
   return (
-    <article className='productContainer'>
+    <article className='itemContainer product'>
         <div className="image" style={{backgroundImage: `url(../${product.images[0]})` }}>
         </div>
-        <div className="description">
+        <div className="title-price">
             <h3>{product.title}</h3>
-            <p>{product.description}</p>
-        </div>
-        <div className="price">
             <span>${product.price}</span>
-            <button className='btn btn-background'>Add to cart</button>
         </div>
+        <div className="description">
+            <span>{product.description.length > 60 ? product.description.substr(0, 60) + '...' : product.description}</span>
+        </div>
+        <div className="sizes">
+          <div className={product.sizes.includes('s') ? 'talle habilitado' : 'talle'} >s</div>
+          <div className={product.sizes.includes('m') ? 'talle habilitado' : 'talle'} >m</div>
+          <div className={product.sizes.includes('l') ? 'talle habilitado' : 'talle'}>l</div>
+          <div className={product.sizes.includes('xl') ? 'talle habilitado' : 'talle'}>xl</div>
+          <div className={product.sizes.includes('xxl') ? 'talle habilitado' : 'talle'}>xxl</div>
+        </div>
+            <button className='btn btn-background'>Agregar al carrito</button>
     </article>
   )
 }
