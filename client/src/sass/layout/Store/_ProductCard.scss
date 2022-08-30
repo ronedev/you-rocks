@@ -1,12 +1,18 @@
 .itemContainer.product{
     width: 30rem;
     height: 40rem;
-    gap: .5rem;
+    gap: 1.1rem;
+    padding: 2.5rem;
     .title-price{
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        h3, span{
+            font-family: $fuente_titulos;
+            font-size: 1.8rem;
+            margin: 0;
+        }
     }
     .sizes{
         width: 100%;
@@ -15,12 +21,14 @@
         gap: 2rem;
         .talle{
             background-color: #5b5b5b;
-            width: 2rem;
-            height: 2rem;
+            width: 3rem;
+            height: 3rem;
             text-transform: uppercase;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: $fuente_base;
+            font-size: 1.2rem;
             font-weight: 900;
             color: $blanco;
             cursor: not-allowed;
@@ -29,5 +37,8 @@
                 cursor: pointer;
             }
         }
+    }
+    .btn{
+        width: 100%;
     }
 }

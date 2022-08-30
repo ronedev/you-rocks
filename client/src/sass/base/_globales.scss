@@ -69,4 +69,7 @@ a{
 .btn-background{
   background-color: $principal;
   color: $negro;
+  &:hover{
+    background-color: #dbff71;
+  }
 }
