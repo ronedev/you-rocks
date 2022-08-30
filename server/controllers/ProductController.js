@@ -7,12 +7,28 @@ exports.addNewProduct = async (req, res, next)=>{
 }
 
 exports.getAllProducts = async (req, res)=>{
-    try {
-        const products = await Product.find().lean()
-        if(products) return res.status(200).json(products)
-    } catch (error) {
-        console.log(error)
-        return res.status(error.code).send(error.message)
+    
+    const {page} = req.query
+    const limit = 6
+    const offset = limit * (page - 1)
+
+    if(page){
+        try {
+            const products = await Product.find().skip(offset).limit(limit).lean()
+            const count = await Product.countDocuments()
+            if(products) return res.status(200).json({products, count})
+        } catch (error) {
+            console.log(error)
+            return res.status(error.code).send(error.message)
+        }
+    }else{
+        try {
+            const products = await Product.find().lean()
+            if(products) return res.status(200).json(products)
+        } catch (error) {
+            console.log(error)
+            return res.status(error.code).send(error.message)
+        }
     }
 }
 

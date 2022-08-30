@@ -1,5 +1,6 @@
 export const initialState= {
-    products: []
+    products: [],
+    count: 0
 }
 
 export const actions = {
@@ -13,7 +14,7 @@ export const productReducer = (state, action)=>{
     switch(action.type){
         case actions.GET_ALL_PRODUCTS:
             return {
-                products: action.products
+                ...state, products: action.data.products, count: action.data.count
             }
         default:
             return state

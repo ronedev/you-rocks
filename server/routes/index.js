@@ -7,12 +7,12 @@ const router = express.Router()
 router.get('/', (req, res)=> res.send('Hola'))
 
 //Obtener todos los productos
-router.get('/product/get', productController.getAllProducts)
+router.get('/product/get/', productController.getAllProducts)
 
-//Obteenr los productos en oferta
+//Obtener los productos en oferta
 router.get('/product/get-offered', productController.getOfferedProducts)
 
-//Obteenr los productos en oferta
+//Obtener los productos en oferta
 router.get('/product/get-random', productController.getRandomProduct)
 
 //Agregar producto

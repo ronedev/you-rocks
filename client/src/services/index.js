@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-export async function getAllProducts(){
+export async function getAllProducts(page){
   try{
     const response = await axios({
-      url: `${process.env.REACT_APP_BASE_URL}/product/get`,
+      url: `${process.env.REACT_APP_BASE_URL}/product/get/?page=${page}`,
       method: 'GET'
     })
     return response
