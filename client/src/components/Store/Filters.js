@@ -1,11 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import searchIcon from "../../images/icons/search.png";
 import filterIcon from "../../images/icons/filter.png";
 import downArrowIcon from "../../images/icons/down-arrow.png";
+import { ProductContext } from "../../context/ProductsContext";
 
 const Filters = () => {
   const [filter, setFilter] = useState(false);
   const [order, setOrder] = useState(false);
+
+  const { getOfferedProducts, getMaleProducts, getFemaleProducts, getUnisexProducts } = useContext(ProductContext)
+
+  const loadOfferedProducts = async ()=>{
+    await getOfferedProducts()
+    setFilter(false)
+  }
+  const loadMaleProducts = async ()=>{
+    await getMaleProducts()
+    setFilter(false)
+  }
+  const loadFemaleProducts = async ()=>{
+    await getFemaleProducts()
+    setFilter(false)
+  }
+  const loadUnisexProducts = async ()=>{
+    await getUnisexProducts()
+    setFilter(false)
+  }
 
   return (
     <>
@@ -16,10 +36,10 @@ const Filters = () => {
           </button>
           <div className={filter ? "order-options aparecer" : "order-options none"}>
             <div className="options">
-              <button>Ofertas</button>
-              <button>Masculino</button>
-              <button>Femenino</button>
-              <button>Unisex</button>
+              <button onClick={()=> loadOfferedProducts()}>Ofertas</button>
+              <button onClick={()=>loadMaleProducts()}>Masculino</button>
+              <button onClick={()=>loadFemaleProducts()}>Femenino</button>
+              <button onClick={()=>loadUnisexProducts()}>Unisex</button>
             </div>
           </div>
         </div>

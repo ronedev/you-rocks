@@ -12,6 +12,54 @@ export async function getAllProducts(page){
   }
 }
 
+export async function getOfferedProducts(page){
+  try{
+    const response = await axios({
+      url: `${process.env.REACT_APP_BASE_URL}/product/get-offered/?page=${page}`,
+      method: 'GET'
+    })
+    return response
+  }catch(error){
+    console.log(error)
+  }
+}
+
+export async function getMaleProducts(page){
+  try{
+    const response = await axios({
+      url: `${process.env.REACT_APP_BASE_URL}/product/get-male/?page=${page}`,
+      method: 'GET'
+    })
+    return response
+  }catch(error){
+    console.log(error)
+  }
+}
+
+export async function getFemaleProducts(page){
+  try{
+    const response = await axios({
+      url: `${process.env.REACT_APP_BASE_URL}/product/get-female/?page=${page}`,
+      method: 'GET'
+    })
+    return response
+  }catch(error){
+    console.log(error)
+  }
+}
+
+export async function getUnisexProducts(page){
+  try{
+    const response = await axios({
+      url: `${process.env.REACT_APP_BASE_URL}/product/get-unisex/?page=${page}`,
+      method: 'GET'
+    })
+    return response
+  }catch(error){
+    console.log(error)
+  }
+}
+
 export async function getProducts() {
   try {
     const response = await axios({
