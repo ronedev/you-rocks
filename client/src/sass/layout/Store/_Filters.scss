@@ -1,0 +1,100 @@
+.filters-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all .5s ease;
+    .btn{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+    .btn-border{
+        text-transform: none;
+    }
+    input{
+        background-color: transparent;
+        border: none;
+        color: $blanco;
+        outline: none;
+    }
+}
+
+.filter-options{
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    overflow: hidden;
+    gap: 2rem;
+    margin: 2rem;
+    animation: aparecer .4s ease;
+}
+
+.none.filter{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem;
+    height: 0;
+    opacity: 0;
+    animation: desaparecer .4s ease;
+}
+
+.order-options{
+    display: grid;
+    position: relative;
+    .options{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: grid;
+        width: 100%;
+    }
+    button{
+        padding: 1rem 0;
+        border: none;
+        background-color: $principal;
+        cursor: pointer;
+        font-family: $fuente_base;
+        &:hover{
+            background-color: #dbff71;
+        }
+    }
+    &.aparecer{
+        button{
+            animation: aparecer .4s ease;
+        }
+    }
+    &.none{
+        button{
+            overflow: hidden;
+            height: 0;
+            padding: 0;
+            animation: desaparecer .4s ease;
+        }
+    }
+}
+
+
+
+@keyframes aparecer {
+    from{
+        height: 0;
+        padding: 0;
+    }
+    to{
+        height: auto;
+        padding: 1rem 0;
+    }
+}
+
+@keyframes desaparecer {
+    from{
+        height: auto;
+        padding: 1rem 0;
+    }
+    to{
+        height: 0;
+        padding: 0;
+    }
+}
