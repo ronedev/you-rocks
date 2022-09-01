@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../context/ProductsContext";
+import useModal from "../../hooks/useModal";
 import ProductCard from "./ProductCard";
+import ProductModal from "./ProductModal";
 
 const Products = () => {
   const {
@@ -15,6 +17,8 @@ const Products = () => {
     getMaleProducts,
     getUnisexProducts,
   } = useContext(ProductContext);
+
+  const {isOpened, setIsOpened, modalData, setModalData} = useModal()
 
   useEffect(() => {
     switch (actualAction) {
@@ -40,8 +44,9 @@ const Products = () => {
   return (
     <section className="products-container">
       <div className="products-grid">
+        <ProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={modalData}/>
         {data.products.map((product) => (
-          <ProductCard product={product} />
+          <ProductCard product={product} setModalData={setModalData} setIsOpened={setIsOpened} />
         ))}
       </div>
       <div className="pagination">
