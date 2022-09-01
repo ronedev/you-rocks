@@ -11,7 +11,7 @@ const Products = () => {
   useEffect(()=>{
     setLimitsProducts(1)
   },[actualAction])
-  
+
   useEffect(() => {
     const totalPagesIndex = Math.ceil(data.count / 6);
     let pages = [];

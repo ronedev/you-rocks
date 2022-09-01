@@ -20,14 +20,19 @@
     }
 }
 
-.filter-options{
+.filter-buttons, .order-buttons{
     display: flex;
     align-items: center;
-    height: 4rem;
-    overflow: hidden;
-    gap: 2rem;
-    margin: 2rem;
-    animation: aparecer .4s ease;
+    gap: .5rem;
+}
+
+#reload{
+    width: 2rem;
+    cursor: pointer;
+    transition: all .3s ease;
+    &:hover{
+        transform: scale(1.1) rotate(80deg);
+    }
 }
 
 .none.filter{
