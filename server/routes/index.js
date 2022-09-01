@@ -9,6 +9,9 @@ router.get('/', (req, res)=> res.send('Hola'))
 //Obtener todos los productos
 router.get('/product/get/', productController.getAllProducts)
 
+//Obtener un solo producto especifico
+router.get('/product/get/:id', productController.getOneProduct)
+
 //Obtener los productos en oferta
 router.get('/product/get-offered', productController.getOfferedProducts)
 

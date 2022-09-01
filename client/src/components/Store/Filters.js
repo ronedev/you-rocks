@@ -10,11 +10,14 @@ const Filters = () => {
   const [order, setOrder] = useState(false);
 
   const {
+    limitProducts,
     getAllProducts,
     getOfferedProducts,
     getMaleProducts,
     getFemaleProducts,
     getUnisexProducts,
+    orderByPrice,
+    orderByDate
   } = useContext(ProductContext);
 
   const loadOfferedProducts = async () => {
@@ -34,6 +37,16 @@ const Filters = () => {
     setFilter(false);
   };
 
+  const loadOrderByProducts = (lowOrHigh)=>{
+    orderByPrice(lowOrHigh)
+    setOrder(false)
+  }
+
+  const loadOrderByDate = (closeOrDistant)=>{
+    orderByDate(closeOrDistant)
+    setOrder(false)
+  }
+
   return (
     <>
       <div className="filters-container">
@@ -50,7 +63,7 @@ const Filters = () => {
                 src={reloadIcon}
                 alt="Reload products"
                 id="reload"
-                onClick={() => getAllProducts()}
+                onClick={() => getAllProducts(limitProducts)}
               />
             </button>
           </div>
@@ -79,7 +92,7 @@ const Filters = () => {
                 src={reloadIcon}
                 alt="Reload products"
                 id="reload"
-                onClick={() => getAllProducts()}
+                onClick={() => getAllProducts(limitProducts)}
               />
             </button>
           </div>
@@ -87,10 +100,10 @@ const Filters = () => {
             className={order ? "order-options aparecer" : "order-options none"}
           >
             <div className="options">
-              <button>Menor precio</button>
-              <button>Mayor precio</button>
-              <button>Mas nuevo</button>
-              <button>Mas antiguo</button>
+              <button onClick={()=> loadOrderByProducts('low')}>Menor precio</button>
+              <button onClick={()=> loadOrderByProducts('high')}>Mayor precio</button>
+              <button onClick={()=> loadOrderByDate('close')}>Mas nuevo</button>
+              <button onClick={()=> loadOrderByDate('distant')}>Mas antiguo</button>
             </div>
           </div>
         </div>

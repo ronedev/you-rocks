@@ -16,6 +16,10 @@ export const productReducer = (state, action)=>{
             return {
                 ...state, products: action.data.products, count: action.data.count
             }
+        case actions.ORDER:
+            return{
+                ...state, products: action.products
+            }
         default:
             return state
     }

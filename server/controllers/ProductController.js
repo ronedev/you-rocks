@@ -6,6 +6,15 @@ exports.addNewProduct = async (req, res, next)=>{
     return next()
 }
 
+exports.getOneProduct = async (req, res)=>{
+    const {id} = req.params
+    const limit = 1
+    const offset = id
+
+    const product = await Product.findOne().skip(offset).limit(limit)
+    res.send('Por terminar')
+}
+
 exports.getAllProducts = async (req, res)=>{
     
     const {page} = req.query

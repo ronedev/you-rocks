@@ -3,41 +3,35 @@ import { ProductContext } from "../../context/ProductsContext";
 import ProductCard from "./ProductCard";
 
 const Products = () => {
-  const { actualAction, data, getAllProducts, getOfferedProducts, getFemaleProducts, getMaleProducts, getUnisexProducts } = useContext(ProductContext);
-
-  const [limitProducts, setLimitsProducts] = useState(1);
-  const [totalPages, setTotalPages]= useState([])
-
-  useEffect(()=>{
-    setLimitsProducts(1)
-  },[actualAction])
-
-  useEffect(() => {
-    const totalPagesIndex = Math.ceil(data.count / 6);
-    let pages = [];
-
-    for (let index = 1; index <= totalPagesIndex; index++) {
-      pages.push(index);
-    }
-    setTotalPages(pages)
-  }, [data]);
+  const {
+    actualAction,
+    data,
+    totalPages,
+    limitProducts,
+    setLimitsProducts,
+    getAllProducts,
+    getOfferedProducts,
+    getFemaleProducts,
+    getMaleProducts,
+    getUnisexProducts,
+  } = useContext(ProductContext);
 
   useEffect(() => {
-    switch(actualAction){
-      case 'ALL':
+    switch (actualAction) {
+      case "ALL":
         getAllProducts(limitProducts);
         break;
-      case 'OFFERED':
-        getOfferedProducts(limitProducts)
+      case "OFFERED":
+        getOfferedProducts(limitProducts);
         break;
-      case 'MALE':
-        getMaleProducts(limitProducts)
+      case "MALE":
+        getMaleProducts(limitProducts);
         break;
-      case 'FEMALE':
-        getFemaleProducts(limitProducts)
+      case "FEMALE":
+        getFemaleProducts(limitProducts);
         break;
-      case 'UNISEX':
-        getUnisexProducts(limitProducts)
+      case "UNISEX":
+        getUnisexProducts(limitProducts);
         break;
       default:
         getAllProducts(limitProducts);

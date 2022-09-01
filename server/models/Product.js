@@ -36,7 +36,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    sizes: [String]
+    sizes: [String],
+    createdAt:{
+        type: String
+    }
 })
 
 module.exports = mongoose.model('Product', productSchema)

@@ -26,7 +26,7 @@ const Offers = () => {
       const response = await getProducts();
 
       if (response.status === 200) {
-        setProducts(response.data);
+        setProducts(response.data.products);
         setLoading(false);
       }
     }
