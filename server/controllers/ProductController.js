@@ -134,3 +134,23 @@ exports.getRandomProduct = async (req, res, next)=> {
         return res.status(error.code).send(error.message)
     }
 }
+
+exports.searchProduct = async (req, res)=>{
+    const {q} = req.query
+    try {
+        const products = await Product.find({
+            $text: {
+                $search: q
+            }
+        }).lean()
+        const count = await Product.countDocuments({
+            $text:{
+                $search: q
+            }
+        })
+        if(products) return res.status(200).json({products, count})
+    } catch (error) {
+        console.log(error)
+        return res.status(error.code).send(error.message)
+    }
+}

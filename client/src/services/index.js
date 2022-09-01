@@ -83,3 +83,15 @@ export async function getRandomProduct(){
     console.log(error)
   }
 }
+
+export async function getSearchProduct(search){
+  try {
+    const response = await axios({
+      url: `${process.env.REACT_APP_BASE_URL}/product/search/?q=${search}`,
+      method: "GET",
+    })
+    return response
+  } catch (error) {
+    console.log(error)
+  }
+}

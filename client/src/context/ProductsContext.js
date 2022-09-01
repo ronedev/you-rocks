@@ -4,7 +4,7 @@ import {
   initialState,
   productReducer,
 } from "../reducers/ProductReducer";
-import { getAllProducts, getFemaleProducts, getMaleProducts, getOfferedProducts, getUnisexProducts } from "../services";
+import { getAllProducts, getFemaleProducts, getMaleProducts, getOfferedProducts, getSearchProduct, getUnisexProducts } from "../services";
 import { getTotalPages } from "../utils";
 
 export const ProductContext = React.createContext({});
@@ -39,6 +39,12 @@ export const ProductProvider = ({ children }) => {
       default:
         return state
     } 
+  }
+
+  async function getSearch(search){
+    const response = await getSearchProduct(search)
+
+    dispatch({type: actions.SEARCH, data: response.data})
   }
 
   useEffect(()=>{
@@ -106,7 +112,8 @@ export const ProductProvider = ({ children }) => {
         setActualAction('UNISEX')
   },
   orderByPrice,
-  orderByDate
+  orderByDate,
+  getSearch
   };
 
   return (

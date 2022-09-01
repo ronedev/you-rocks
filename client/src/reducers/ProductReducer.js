@@ -5,7 +5,6 @@ export const initialState= {
 
 export const actions = {
     GET_PRODUCTS: "GET_PRODUCTS",
-    FILTER: "FILTER",
     ORDER: "ORDER",
     SEARCH: "SEARCH"
 }
@@ -19,6 +18,10 @@ export const productReducer = (state, action)=>{
         case actions.ORDER:
             return{
                 ...state, products: action.products
+            }
+        case actions.SEARCH:
+            return{
+                ...state, products: action.data.products, count: action.data.count
             }
         default:
             return state

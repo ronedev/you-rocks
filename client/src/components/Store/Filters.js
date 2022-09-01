@@ -8,6 +8,7 @@ import { ProductContext } from "../../context/ProductsContext";
 const Filters = () => {
   const [filter, setFilter] = useState(false);
   const [order, setOrder] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
   const {
     limitProducts,
@@ -17,7 +18,8 @@ const Filters = () => {
     getFemaleProducts,
     getUnisexProducts,
     orderByPrice,
-    orderByDate
+    orderByDate,
+    getSearch
   } = useContext(ProductContext);
 
   const loadOfferedProducts = async () => {
@@ -47,17 +49,14 @@ const Filters = () => {
     setOrder(false)
   }
 
+  const handleSearch = (e)=>{
+    const {value} = e.target
+    setSearchValue(value)
+  }
+
   return (
     <>
       <div className="filters-container">
-        <div className="filter">
-          <div className="filter-buttons">
-            <button
-              className="btn btn-border"
-              onClick={() => setFilter(!filter)}
-            >
-              Filter <img src={filterIcon} alt="Icono de filtrado" />
-            </button>
             <button>
               <img
                 src={reloadIcon}
@@ -65,6 +64,14 @@ const Filters = () => {
                 id="reload"
                 onClick={() => getAllProducts(limitProducts)}
               />
+            </button>
+        <div className="filter">
+          <div className="filter-buttons">
+            <button
+              className="btn btn-border"
+              onClick={() => setFilter(!filter)}
+            >
+              Filter <img src={filterIcon} alt="Icono de filtrado" />
             </button>
           </div>
           <div
@@ -87,14 +94,6 @@ const Filters = () => {
               Order by{" "}
               <img src={downArrowIcon} alt="Icono de flechas hacia abajo" />
             </button>
-            <button>
-              <img
-                src={reloadIcon}
-                alt="Reload products"
-                id="reload"
-                onClick={() => getAllProducts(limitProducts)}
-              />
-            </button>
           </div>
           <div
             className={order ? "order-options aparecer" : "order-options none"}
@@ -107,10 +106,15 @@ const Filters = () => {
             </div>
           </div>
         </div>
-        <div className="btn btn-border">
-          <input type="text" name="search" id="search" placeholder="Search" />
+        <form className="btn btn-border" onSubmit={(e)=>{
+            e.preventDefault()
+            getSearch(searchValue)
+          }}
+          style={{cursor: 'text'}}
+          >
+          <input type="text" name="search" id="search" placeholder="Search" onChange={handleSearch}/>
           <img src={searchIcon} alt="Icono de buscar" />
-        </div>
+        </form>
       </div>
     </>
   );

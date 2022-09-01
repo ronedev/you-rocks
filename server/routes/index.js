@@ -27,6 +27,9 @@ router.get('/product/get-unisex', productController.getUnisexProducts)
 //Obtener los productos en oferta
 router.get('/product/get-random', productController.getRandomProduct)
 
+//Buscar producto
+router.get('/product/search', productController.searchProduct)
+
 //Agregar producto
 router.post('/product/add', productController.addNewProduct)
 

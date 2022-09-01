@@ -2,7 +2,8 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 3rem;
     transition: all .5s ease;
     .btn{
         display: flex;
@@ -27,7 +28,7 @@
 }
 
 #reload{
-    width: 2rem;
+    width: 3rem;
     cursor: pointer;
     transition: all .3s ease;
     &:hover{
