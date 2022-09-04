@@ -19,28 +19,33 @@
     align-items: center;
     gap: 2rem;
     font-family: $fuente_base;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     margin-top: 2rem;
     margin-bottom: 4rem;
-    color: $negro;
-    span{
-        background-color: $blanco;
-        padding: .5rem 1rem;
-        cursor: pointer;
-        font-weight: 900;
-        &.selected{
-            background-color: $principal;
+    color: $blanco;
+    .nextOrPrev{
+        border: none;
+        img{
+            width: 2.5rem;
         }
         &.disabled{
-            background-color: $gris;
-            cursor:default;
-            &:hover{
-                background-color: $gris;
-                color: $negro;
-            }
+            border: none;
+            opacity: .6;
+        }
+    }
+    span{
+        border: 1px solid $blanco;
+        padding: .5rem 1rem;
+        cursor: pointer;
+        &.selected{
+            border: 1px solid $principal;
+        }
+        &.disabled{
+            border: 1px solid $gris;
+            cursor: not-allowed;
         }
         &:hover{
-            background-color: $principal;
+            color: $principal;
         }
     }
 }

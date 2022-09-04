@@ -1,8 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { ProductContext } from "../../context/ProductsContext";
 import useModal from "../../hooks/useModal";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal";
+import rightIcon from '../../images/icons/right.png'
+import leftIcon from '../../images/icons/left.png'
 
 const Products = () => {
   const {
@@ -51,14 +53,14 @@ const Products = () => {
       </div>
       <div className="pagination">
         <span
-          className={limitProducts === totalPages[0] ? "disabled" : ""}
+          className={limitProducts === totalPages[0] ? "disabled nextOrPrev" : "nextOrPrev"}
           onClick={() => {
             if (limitProducts !== totalPages[0]) {
               setLimitsProducts(limitProducts - 1);
             }
           }}
         >
-          {"<"}
+          <img src={leftIcon} alt="Pagina anterior" />
         </span>
         {totalPages.map((page) => (
           <span
@@ -75,8 +77,8 @@ const Products = () => {
         <span
           className={
             limitProducts === totalPages[totalPages.length - 1]
-              ? "disabled"
-              : ""
+              ? "disabled nextOrPrev"
+              : "nextOrPrev"
           }
           onClick={() => {
             if (limitProducts !== totalPages[totalPages.length - 1]) {
@@ -84,7 +86,7 @@ const Products = () => {
             }
           }}
         >
-          {">"}
+          <img src={rightIcon} alt="Siguiente pagina" />
         </span>
       </div>
     </section>
