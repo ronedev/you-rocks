@@ -28,6 +28,14 @@ button{
   border: none;
 }
 
+input, textarea{
+  background-color: transparent;
+  border: 1.5px solid $principal;
+  color: $blanco;
+  outline: none;
+  padding: .5rem;
+}
+
 .container{
   width: 100%;
   display: grid;
@@ -93,4 +101,11 @@ button{
   &:hover{
     background-color: #dbff71;
   }
+}
+
+.campo{
+  display: grid;
+  gap: .2rem;
+  font-family: $fuente_base;
+  font-size: 1.3rem;
 }

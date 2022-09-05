@@ -3,32 +3,32 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     overflow: hidden;
-    .image-container{
-        width: 100%;
-        height: 100%;
-        background-image: url('../../../images/about.webp');
-        background-position: center;
-        background-size: cover;
+}
+.image-container{
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../images/about.webp');
+    background-position: center;
+    background-size: cover;
+}
+.header-description{
+    padding: 2rem;
+    display: grid;
+    justify-items: center;
+    h2{
+        font-family: $fuente_titulos;
+        text-shadow: -1px -1px 0 $principal, 1px -1px 0 $principal, -1px 1px 0 $principal, 1px 1px 0 $principal;
+        color: $negro;
+        font-size: 15rem;
+        margin: 0;
+        text-transform: uppercase;
     }
-    .header-description{
-        padding: 2rem;
-        display: grid;
-        justify-items: center;
-        h2{
-            font-family: $fuente_titulos;
-            text-shadow: -1px -1px 0 $principal, 1px -1px 0 $principal, -1px 1px 0 $principal, 1px 1px 0 $principal;
-            color: $negro;
-            font-size: 15rem;
-            margin: 0;
-            text-transform: uppercase;
-        }
-        p{
-            font-family: $fuente_base;
-            font-size: 1.2rem;
-            font-weight: 100;
-        }
-        button{
-            width: 20rem;
-        }
+    p{
+        font-family: $fuente_base;
+        font-size: 1.2rem;
+        font-weight: 100;
+    }
+    button{
+        width: 20rem;
     }
 }

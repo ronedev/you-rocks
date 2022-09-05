@@ -1,0 +1,20 @@
+.header.contact{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow: hidden;
+}
+
+.image-container{
+    background-image: url('../../../images/contact.webp');
+}
+
+.contact-form{
+    width: 80%;
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    input{
+        width: 20rem;
+    }
+}
