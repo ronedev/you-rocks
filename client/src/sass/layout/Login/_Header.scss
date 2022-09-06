@@ -1,0 +1,39 @@
+.header.login{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .form-container{
+        h2{
+            font-family: $fuente_titulos;
+            text-shadow: -1px -1px 0 $principal, 1px -1px 0 $principal, -1px 1px 0 $principal, 1px 1px 0 $principal;
+            color: $negro;
+            font-size: 15rem;
+            margin: 0;
+            text-transform: uppercase;
+            text-align: start;
+            width: 60%;
+        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        form{
+            width: 60%;
+            display: grid;
+            gap: 1rem;
+        }
+        .etiquetas{
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    .description{
+        height: 100%;
+        width: 100%;
+        background-image: url('../../../images/login.webp');
+        background-position: center;
+        background-size: cover;
+    }
+}
