@@ -8,7 +8,7 @@ const Header = () => {
             <form action="">
                 <div className="campo">
                     <label id='name'>Ingrese su nombre de usuario:</label>
-                    <input type="text" id='name' name='name' placeholder='Ingrese su usuario o email' />
+                    <input type="text" id='name' name='name' placeholder='Ingrese su usuario o email' autoFocus/>
                 </div>
                 <div className="campo">
                     <label id='password'>Contraseña:</label>
