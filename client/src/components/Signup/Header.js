@@ -5,7 +5,7 @@ const Header = () => {
     <header className='header login'>
         <div className="form-container">
             <h2>Crear cuenta</h2>
-            <form action="">
+            <form action="http://localhost:5000/signup" method='post'>
                 <div className="campo">
                     <label id='name'>Ingrese su nombre: </label>
                     <input type="text" id='name' name='name' placeholder='Ingrese su nombre' autoFocus/>

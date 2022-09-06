@@ -10,3 +10,4 @@ mongoose.connection.on('error', (error)=>{
 })
 
 require('../models/Product')
+require('../models/User')
