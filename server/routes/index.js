@@ -36,6 +36,6 @@ router.get('/product/search', productController.searchProduct)
 router.post('/product/add', productController.addNewProduct)
 
 //USER CONTROLLERS
-router.post('/signup', validateUser)
+router.post('/signup', validateUser, userController.signup)
 
 module.exports = router

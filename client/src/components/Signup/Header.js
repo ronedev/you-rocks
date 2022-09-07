@@ -15,12 +15,12 @@ const Header = () => {
                     <input type="email" id='email' name='email' placeholder='Ingrese su email'/>
                 </div>
                 <div className="campo">
-                    <label id='repeat-password'>Contraseña:</label>
-                    <input type="password" id='repeat-password' name='repeat-password' placeholder='Repita su contraseña' />
+                    <label id='password'>Contraseña:</label>
+                    <input type="password" id='password' name='password' placeholder='Ingrese su contraseña' />
                 </div>
                 <div className="campo">
-                    <label id='password'>Repetir contraseña:</label>
-                    <input type="password" id='password' name='password' placeholder='Ingrese su contraseña' />
+                    <label id='repeat-password'>Repetir contraseña:</label>
+                    <input type="password" id='repeat-password' name='confirmPassword' placeholder='Repita su contraseña' />
                 </div>
                 <button className='btn btn-background'>Crear cuenta</button>
             </form>

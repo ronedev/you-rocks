@@ -24,13 +24,14 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.pre('save', async function(next){
-    if(!this.isModified('password')){
+    const user = this
+    if(!user.isModified('password')){
         //Si el password esta hasheado
         return next()
     }
     //Si el password no esta hasheado
-    const hash = bcrypt.hash(this.password, 12)
-    this.password = hash
+    const hash = await bcrypt.hash(user.password, 12)
+    user.password = hash
     next()
 })
 

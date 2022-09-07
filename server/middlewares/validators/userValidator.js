@@ -1,43 +1,45 @@
-const {check, validationResult} = require('express-validator');
+const { check, validationResult } = require("express-validator");
 
 exports.validateUser = [
-  check('name')
+  check("name")
     .trim()
     .escape()
     .not()
     .isEmpty()
-    .withMessage('El nombre es obligatorio')
+    .withMessage("El nombre es obligatorio")
     .bail()
-    .isLength({min: 3})
-    .withMessage('El nombre debe tener al menos 3 caracteres ')
+    .isLength({ min: 3 })
+    .withMessage("El nombre debe tener al menos 3 caracteres ")
     .bail(),
-  check('email')
+  check("email")
     .trim()
-    .normalizeEmail()
+    .isEmail()
+    .withMessage("Ingrese un email válido")
     .not()
     .isEmpty()
-    .withMessage('Ingrese un email válido')
+    .withMessage("Debe ingresar un email")
     .bail(),
-  check('password')
+  check("password")
     .trim()
     .not()
     .isEmpty()
-    .isLength({min: 6})
-    .withMessage('La contraseña debe tener al menos 6 caracteres')
-    .bail(),
-  check('repeat-password')
-    .trim()
-    .not()
-    .isLength({min: 6})
-    .equals('password')
-    .withMessage('Las contraseñas deben coincidir')
+    .withMessage("Debe ingresar su contraseña")
+    .isLength({ min: 6 })
+    .withMessage("La contraseña debe tener al menos 6 caracteres")
+    .custom((value, { req, loc, path }) => {
+      if (value !== req.body.confirmPassword) {
+        // trow error if passwords do not match
+        throw new Error("Las contraseñas no coinciden");
+      } else {
+        return value;
+      }
+    })
     .bail(),
   (req, res, next) => {
     const errors = validationResult(req);
-    console.log(req.body)
-    console.log(errors)
+    
     if (!errors.isEmpty())
-      return res.status(422).json({errors: errors.array()});
+      return res.status(422).json({ errors: errors.array() });
     next();
   },
 ];
