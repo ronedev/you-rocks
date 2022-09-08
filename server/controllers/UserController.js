@@ -1,6 +1,7 @@
 const passport = require("passport");
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+const jwt = require('jsonwebtoken')
 
 exports.signup = async (req, res) => {
   const newUser = new User(req.body);
@@ -28,7 +29,10 @@ exports.authenticateUser = function (req, res, next) {
       if (loginErr) {
         return next(loginErr);
       }
-      return res.send({ success : true, message : 'authentication succeeded', user });
+
+      const token = jwt.sign(user.toJSON(), process.env.SECRET)
+      
+      return res.send({ success : true, message : 'authentication succeeded', token});
     });      
   })(req, res, next);
 };

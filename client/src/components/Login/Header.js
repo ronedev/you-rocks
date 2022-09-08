@@ -14,15 +14,13 @@ const Header = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
-  console.log(formData);
-
   const requestUser = async (e) => {
     e.preventDefault();
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append(
       "Cookie",
-      "llavesecretaaaaaaaa=s%3AstiVVuy_77QgsRc3FmxJzBe5t5YBKr-d.1KcnVjl5vph33g8wAf9l1NxjTHaGIOZVpJjz42uQSaI"
+      process.env.KEY
     );
 
     var raw = JSON.stringify({
