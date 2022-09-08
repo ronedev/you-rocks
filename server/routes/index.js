@@ -38,4 +38,6 @@ router.post('/product/add', productController.addNewProduct)
 //USER CONTROLLERS
 router.post('/signup', validateUser, userController.signup)
 
+//Login
+router.post('/login', userController.authenticateUser)
 module.exports = router
