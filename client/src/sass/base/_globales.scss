@@ -109,3 +109,47 @@ input, textarea{
   font-family: $fuente_base;
   font-size: 1.3rem;
 }
+
+.alert-container{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: all 1s ease;
+  animation: up 1s;
+  overflow-y: hidden;
+}
+
+.alert{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #0e0e0e;
+  border: 1px solid $principal;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  img{
+    width: 1.5rem;
+    cursor: pointer;
+    margin-left: 2rem;
+  }
+  &.error{
+    color: $error;
+  }
+}
+
+@keyframes up {
+  from{
+    top: 40%;
+    opacity: 0;
+  }
+  to{
+    top: 0;
+    opacity: 1;
+  }
+}

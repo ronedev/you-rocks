@@ -1,18 +1,20 @@
 import React, { useState } from "react";
+import cerrarIcon from "../../images/icons/cerrar.png";
 
 const Header = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    })
+  const [errors, setErrors] = useState([]);
 
-    function handleFormChanges(e){
-        const {name, value} = e.target
-        setFormData(prev => ({...prev, [name]:value}))
-    }
+  function handleFormChanges(e) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  }
 
-    console.log(formData)
+  console.log(formData);
 
   const requestUser = async (e) => {
     e.preventDefault();
@@ -36,12 +38,29 @@ const Header = () => {
     };
 
     await fetch("http://localhost:5000/login", requestOptions)
-        .then(res => res.json())
-        .then(data => console.log(data))
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          window.location = "/";
+        } else {
+          setErrors((prev) => [...prev, data.message]);
+        }
+      });
   };
 
   return (
     <header className="header login">
+      {errors.length > 0 &&
+        (
+          <div className="alert-container" onClick={()=> setErrors([])}>
+            {errors.map((err) => (
+            <div className="alert error">
+              <div className="description-alert">{err}</div>
+              <img src={cerrarIcon} alt="cerrar alerta" />
+            </div>
+            ))}
+          </div>
+        )}
       <div className="form-container">
         <h2>Login</h2>
         <form onSubmit={requestUser}>

@@ -14,11 +14,21 @@ exports.signup = async (req, res) => {
   }
 };
 
-exports.authenticateUser = [passport.authenticate("local", {
-  failureRedirect: "http://localhost:3000/login",
-  failureMessage: "Hubo un error al iniciar sesion",
-}),
-    function(req, res){
-        res.json(req.user)
+exports.authenticateUser = function (req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) {
+      return next(err); // will generate a 500 error
     }
-]
+    // Generate a JSON response reflecting authentication status
+    if (!user) {
+      return res.send({ success : false, message : 'Email y/o contraseña incorrectos' });
+    }
+
+    req.login(user, loginErr => {
+      if (loginErr) {
+        return next(loginErr);
+      }
+      return res.send({ success : true, message : 'authentication succeeded', user });
+    });      
+  })(req, res, next);
+};
