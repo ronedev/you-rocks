@@ -40,4 +40,8 @@ router.post('/signup', validateUser, userController.signup)
 
 //Login
 router.post('/login', userController.authenticateUser)
+
+//Logout
+router.post('/logout', userController.logout)
+
 module.exports = router

@@ -6,8 +6,6 @@ export const UserContext = React.createContext({})
 export const UserProvider = ({children})=>{
     const [actualUser, setActualUser] = useLocalStorage('user', null)
 
-    console.log(actualUser)
-
     return(
         <UserContext.Provider value={{actualUser, setActualUser}}>
             {children}

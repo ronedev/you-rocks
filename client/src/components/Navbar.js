@@ -1,9 +1,17 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/UserContext";
+import { logoutUser } from "../services/user";
 
 const Navbar = () => {
 
-  const { actualUser } = useContext(UserContext)
+  const { actualUser, setActualUser } = useContext(UserContext)
+
+  async function logout(){
+    const res = await logoutUser()
+    if(res.success){
+      setActualUser(null)
+    }
+  }
   
   return (
     <section className="container">
@@ -19,11 +27,11 @@ const Navbar = () => {
           </ul>
         </div>
         {actualUser ? (
-          <div className="autenticado">
+          <div className="authentication">
           <p>
-            <a href="/signup">skere</a>{" "}
+            Bienvenido,{" "}{actualUser.name}{" "}
             <span>
-              <a href="/login">| Login</a>
+              <button onClick={logout}>| Logout</button>
             </span>
           </p>
         </div>

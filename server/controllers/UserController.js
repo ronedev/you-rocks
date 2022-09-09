@@ -41,3 +41,11 @@ exports.authenticateUser = function (req, res, next) {
     });      
   })(req, res, next);
 };
+
+exports.logout = function(req, res){
+  req.logout((err)=>{
+    if(err) return res.status(err.code).json({success: false, message: 'Ha ocurrido un problema al cerrar la sesión'})
+
+    res.status(200).json({success: true, message: 'Has cerrado sesion correctamente'})
+  })
+}
