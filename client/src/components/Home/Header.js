@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import modelImage from '../../images/fondo.png'
-import { getRandomProduct } from '../../services';
+import { getRandomProduct } from '../../services/product';
 import ItemCard from './ItemCard'
 
 const Header = () => {

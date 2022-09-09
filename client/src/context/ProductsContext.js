@@ -4,7 +4,7 @@ import {
   initialState,
   productReducer,
 } from "../reducers/ProductReducer";
-import { getAllProducts, getFemaleProducts, getMaleProducts, getOfferedProducts, getSearchProduct, getUnisexProducts } from "../services";
+import { getAllProducts, getFemaleProducts, getMaleProducts, getOfferedProducts, getSearchProduct, getUnisexProducts } from "../services/product.js";
 import { getTotalPages } from "../utils";
 
 export const ProductContext = React.createContext({});

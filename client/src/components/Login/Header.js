@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import cerrarIcon from "../../images/icons/cerrar.png";
+import { getUser } from "../../services/user";
 
 const Header = () => {
   const [formData, setFormData] = useState({
@@ -19,35 +20,14 @@ const Header = () => {
 
   const requestUser = async (e) => {
     e.preventDefault();
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append(
-      "Cookie",
-      process.env.KEY
-    );
+    const res = await getUser(formData)
 
-    var raw = JSON.stringify({
-      email: formData.email,
-      password: formData.password,
-    });
-
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    await fetch("http://localhost:5000/login", requestOptions)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setActualUser(data.user)
-          window.location = "/";
-        } else {
-          setErrors((prev) => [...prev, data.message]);
-        }
-      });
+    if(res.success){
+      setActualUser(res.user)
+      window.location = "/";
+    }else{
+      setErrors((prev) => [...prev, res.message]);
+    }
   };
 
   return (
