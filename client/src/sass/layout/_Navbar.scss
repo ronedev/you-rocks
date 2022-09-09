@@ -32,6 +32,8 @@
     }
     .authentication{
         font-size: 1.2rem;
+        display: flex;
+        align-items: center;
         button{
             color: $blanco;
             cursor: pointer;
@@ -40,5 +42,31 @@
         span{
             font-weight: 900;
         }
+        .cart-btn{
+            width: 2.5rem;
+            height: 2.5rem;
+            position: relative;
+            margin-right: 1rem;
+            img{
+                width: 2.5rem;
+            }
+            .cart-quantity{
+                position: absolute;
+                top: -30%;
+                left: 95%;
+                background-color: $principal;
+                color: $negro;
+                width: 1.5rem;
+                height: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                p{
+                    font-size: 1rem;
+                }
+            }
+        }
     }
 }
+

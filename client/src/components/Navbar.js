@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import cartIcon from '../images/icons/cart.png'
 import { UserContext } from "../context/UserContext";
 import { logoutUser } from "../services/user";
 
@@ -28,8 +29,11 @@ const Navbar = () => {
         </div>
         {actualUser ? (
           <div className="authentication">
+            <button className="cart-btn">
+              <img src={cartIcon} alt="Carrito de compras" />
+              <div className="cart-quantity"><p>2</p></div>
+            </button>
           <p>
-            Bienvenido,{" "}{actualUser.name}{" "}
             <span>
               <button onClick={logout}>| Logout</button>
             </span>
