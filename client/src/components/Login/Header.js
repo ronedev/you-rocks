@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../../context/UserContext";
 import cerrarIcon from "../../images/icons/cerrar.png";
 
 const Header = () => {
@@ -6,6 +7,8 @@ const Header = () => {
     email: "",
     password: "",
   });
+
+  const { setActualUser } = useContext(UserContext)
 
   const [errors, setErrors] = useState([]);
 
@@ -39,6 +42,7 @@ const Header = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          setActualUser(data.user)
           window.location = "/";
         } else {
           setErrors((prev) => [...prev, data.message]);

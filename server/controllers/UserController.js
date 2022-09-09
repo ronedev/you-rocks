@@ -31,8 +31,13 @@ exports.authenticateUser = function (req, res, next) {
       }
 
       const token = jwt.sign(user.toJSON(), process.env.SECRET)
+
+      const data = {
+        name: user.name,
+        token
+      }
       
-      return res.send({ success : true, message : 'authentication succeeded', token});
+      return res.send({ success : true, message : 'authentication succeeded', user: data});
     });      
   })(req, res, next);
 };

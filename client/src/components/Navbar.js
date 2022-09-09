@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
+
+  const { actualUser } = useContext(UserContext)
+  
   return (
     <section className="container">
       <nav className="navbar">
@@ -14,7 +18,17 @@ const Navbar = () => {
             <a href="/about">About Us</a>
           </ul>
         </div>
-        <div className="authentication">
+        {actualUser ? (
+          <div className="autenticado">
+          <p>
+            <a href="/signup">skere</a>{" "}
+            <span>
+              <a href="/login">| Login</a>
+            </span>
+          </p>
+        </div>
+        ): (
+          <div className="authentication">
           <p>
             <a href="/signup">Sing up</a>{" "}
             <span>
@@ -22,6 +36,7 @@ const Navbar = () => {
             </span>
           </p>
         </div>
+        )}
       </nav>
     </section>
   );
