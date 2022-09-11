@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import cartIcon from '../images/icons/cart.png'
 import { UserContext } from "../context/UserContext";
 import { logoutUser } from "../services/user";
+import { CartContext } from "../context/CartContext";
 
 const Navbar = () => {
 
   const { actualUser, setActualUser } = useContext(UserContext)
+  const { cartQuantity, openCart } = useContext(CartContext)
 
   async function logout(){
     const res = await logoutUser()
@@ -29,9 +31,9 @@ const Navbar = () => {
         </div>
         {actualUser ? (
           <div className="authentication">
-            <button className="cart-btn">
+            <button className="cart-btn" onClick={()=> openCart()}>
               <img src={cartIcon} alt="Carrito de compras" />
-              <div className="cart-quantity"><p>2</p></div>
+              <div className="cart-quantity"><p>{cartQuantity}</p></div>
             </button>
           <p>
             <span>
