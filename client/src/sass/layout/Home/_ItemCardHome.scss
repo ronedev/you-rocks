@@ -34,6 +34,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 2rem;
         span{
             font-size: 3.2rem;
             font-family: $fuente_titulos;
@@ -42,5 +43,17 @@
         .btn{
             font-size: 1.8rem;
         }
+    }
+}
+
+.btnQuantityContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: .5rem;
+    .btn.small{
+        width: 4rem;
+        padding: .5rem 1rem;
     }
 }

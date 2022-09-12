@@ -138,9 +138,9 @@ input, textarea{
     cursor: pointer;
     margin-left: 2rem;
   }
-  &.error{
-    color: $error;
-  }
+}
+.error{
+  color: $error;
 }
 
 @keyframes up {
