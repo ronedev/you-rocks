@@ -5,6 +5,7 @@ import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal";
 import rightIcon from '../../images/icons/right.png'
 import leftIcon from '../../images/icons/left.png'
+import ItemCard from "../Home/ItemCard";
 
 const Products = () => {
   const {
@@ -48,7 +49,7 @@ const Products = () => {
       <div className="products-grid">
         <ProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={modalData}/>
         {data.products.map((product) => (
-          <ProductCard product={product} setModalData={setModalData} setIsOpened={setIsOpened} />
+          <ItemCard item={product} setModalData={setModalData} setIsOpened={setIsOpened} />
         ))}
       </div>
       <div className="pagination">

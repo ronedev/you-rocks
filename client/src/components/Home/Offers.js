@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import {useSwipeable} from 'react-swipeable'
 import { getProducts } from "../../services/product.js";
 import ItemCard from "./ItemCard";
+import useModal from "../../hooks/useModal.js";
+import ProductModal from "../Store/ProductModal.js";
 
 const Offers = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [sliderItemSelected, setSliderItemSelected] = useState(0);
+
+  const {isOpened, setIsOpened, setModalData, modalData} = useModal()
 
   const handlers = useSwipeable({
     onSwipedLeft: (e) =>
@@ -36,6 +40,7 @@ const Offers = () => {
 
   return (
     <section className="container">
+      <ProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={modalData} />
       <div className="banner">
         <p className="right">
           {" "}
@@ -63,7 +68,7 @@ const Offers = () => {
                 }
                 {...(idx === sliderItemSelected && handlers)}
               >
-                <ItemCard item={item} />
+                <ItemCard item={item} setIsOpened={setIsOpened} setModalData={setModalData}/>
               </div>
             ))}
           </div>

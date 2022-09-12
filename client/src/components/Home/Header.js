@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react'
 import modelImage from '../../images/fondo.png'
 import { getRandomProduct } from '../../services/product';
 import ItemCard from './ItemCard'
+import useModal from '../../hooks/useModal.js'
+import ProductModal from '../Store/ProductModal';
 
 const Header = () => {
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState();
+
+  const {isOpened, setIsOpened} = useModal()
   
   useEffect(()=>{
     async function loadRandomProduct(){
@@ -20,12 +24,13 @@ const Header = () => {
   }, [])
   return (
     <header className='header'>
+        {!loading && <ProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={product}/>}
         <div className="randomCard">
           {loading ? (
             <p>Esta cargando...</p>
           ) : (
             <>
-            <ItemCard item={product} />
+            <ItemCard item={product} setIsOpened={setIsOpened} />
             <a href="/products" className='btn btn-border'>Go to store</a>
             </>
           )}

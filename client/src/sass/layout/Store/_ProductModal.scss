@@ -56,6 +56,10 @@
                 gap: 2rem;
                 font-family: $fuente_titulos;
                 font-size: 3rem;
+                .talle.selected{
+                    background-color: $principal;
+                    color: $negro;
+                }
             }
         }
     }

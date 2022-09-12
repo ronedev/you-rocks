@@ -18,10 +18,10 @@ export const CartProvider = ({children})=>{
         return cartItems.find(item => item.id === id)?.quantity || 0
     }
 
-    function increaseCartQuantity(id){
+    function increaseCartQuantity(id, size = null){
         setCartItems(prevItem => {
             if(prevItem.find(item => item.id === id) == null){
-                return [...prevItem, {id, quantity: 1}]
+                return [...prevItem, {id, quantity: 1, size}]
             }else{
                 return prevItem.map(item =>{
                     if(item.id === id){

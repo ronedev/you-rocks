@@ -1,12 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 
-const ItemCard = ({ item }) => {
-  const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart } =
+const ItemCard = ({ item, setIsOpened, setModalData }) => {
+  const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, cartItems, removeFromCart } =
     useContext(CartContext);
 
   const [quantity, setQuantity] = useState(getItemQuantity(item._id));
   const [maxQuantityAlert, setMaxQuantityAlert] = useState(false)
+
+  useEffect(()=>{
+    if(cartItems.find(product => product.id === item._id)){
+      setQuantity(getItemQuantity(item._id))
+    }else{
+      setQuantity(0)
+    }
+  }, [cartItems])
 
   return (
     <article className="itemContainer">
@@ -29,12 +37,12 @@ const ItemCard = ({ item }) => {
                 removeFromCart(item._id);
                 setQuantity(0);
               } else {
-                increaseCartQuantity(item._id);
-                setQuantity(quantity + 1);
+                setModalData(item)
+                setIsOpened(true)
               }
             }}
           >
-            {quantity > 0 ? "Remove from cart" : "Add to cart"}
+            {quantity > 0 ? "Remove" : "Add to cart"}
           </button>
           {quantity > 0 && (
             <div className="btnQuantityContainer">
