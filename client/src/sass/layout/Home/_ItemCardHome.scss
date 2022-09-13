@@ -44,6 +44,11 @@
         .btn{
             font-size: 1.8rem;
         }
+        .btnContainer{
+            display: grid;
+            align-content: center;
+            width: 100%;
+        }
     }
 }
 

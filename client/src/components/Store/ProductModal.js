@@ -3,13 +3,19 @@ import { CartContext } from "../../context/CartContext";
 import closeIcon from "../../images/icons/cerrar.png";
 
 const ProductModal = ({ isOpened, setIsOpened, data }) => {
-  const { getItemQuantity, increaseCartQuantity, cartItems, removeFromCart } =
-    useContext(CartContext);
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    cartItems,
+    removeFromCart,
+  } = useContext(CartContext);
 
   const [quantity, setQuantity] = useState(getItemQuantity(data._id));
   const [sizeSelected, setSizeSelected] = useState("");
-  const [selectedSizeAlert, setSelectedSizeAlert] = useState(false)
+  const [selectedSizeAlert, setSelectedSizeAlert] = useState(false);
   const [imageSelected, setImageSelected] = useState(0);
+  const [maxQuantityAlert, setMaxQuantityAlert] = useState(false);
 
   useEffect(() => {
     if (isOpened) {
@@ -58,41 +64,71 @@ const ProductModal = ({ isOpened, setIsOpened, data }) => {
                 <div className="sizes">
                   <div
                     className={
-                      data.sizes.includes("s") ? (sizeSelected === 's' ? "talle selected" : "talle habilitado") : "talle"
+                      data.sizes.includes("s")
+                        ? sizeSelected === "s"
+                          ? "talle selected"
+                          : "talle habilitado"
+                        : "talle"
                     }
-                    onClick={() => data.sizes.includes('s') && setSizeSelected("s")}
+                    onClick={() =>
+                      data.sizes.includes("s") && setSizeSelected("s")
+                    }
                   >
                     s
                   </div>
                   <div
                     className={
-                      data.sizes.includes("m") ? (sizeSelected === 'm' ? "talle selected" : "talle habilitado") : "talle"
+                      data.sizes.includes("m")
+                        ? sizeSelected === "m"
+                          ? "talle selected"
+                          : "talle habilitado"
+                        : "talle"
                     }
-                    onClick={() => data.sizes.includes('m') && setSizeSelected("m")}
+                    onClick={() =>
+                      data.sizes.includes("m") && setSizeSelected("m")
+                    }
                   >
                     m
                   </div>
                   <div
                     className={
-                      data.sizes.includes("l") ? (sizeSelected === 'l' ? "talle selected" : "talle habilitado") : "talle"
+                      data.sizes.includes("l")
+                        ? sizeSelected === "l"
+                          ? "talle selected"
+                          : "talle habilitado"
+                        : "talle"
                     }
-                    onClick={() => data.sizes.includes('l') && setSizeSelected("l")}
+                    onClick={() =>
+                      data.sizes.includes("l") && setSizeSelected("l")
+                    }
                   >
                     l
                   </div>
                   <div
                     className={
-                      data.sizes.includes("xl") ? (sizeSelected === 'xl' ? "talle selected" : "talle habilitado") : "talle"
+                      data.sizes.includes("xl")
+                        ? sizeSelected === "xl"
+                          ? "talle selected"
+                          : "talle habilitado"
+                        : "talle"
                     }
-                    onClick={() => data.sizes.includes('xl') && setSizeSelected("xl")}
+                    onClick={() =>
+                      data.sizes.includes("xl") && setSizeSelected("xl")
+                    }
                   >
                     xl
                   </div>
                   <div
                     className={
-                      data.sizes.includes("xxl") ? (sizeSelected === 'xxl' ? "talle selected" : "talle habilitado") : "talle"
+                      data.sizes.includes("xxl")
+                        ? sizeSelected === "xxl"
+                          ? "talle selected"
+                          : "talle habilitado"
+                        : "talle"
                     }
-                    onClick={() => data.sizes.includes('xxl') && setSizeSelected("xxl")}
+                    onClick={() =>
+                      data.sizes.includes("xxl") && setSizeSelected("xxl")
+                    }
                   >
                     xxl
                   </div>
@@ -106,19 +142,64 @@ const ProductModal = ({ isOpened, setIsOpened, data }) => {
                     removeFromCart(data._id);
                     setQuantity(0);
                   } else {
-                    if(sizeSelected){
+                    if (sizeSelected) {
                       increaseCartQuantity(data._id, sizeSelected);
                       setQuantity(quantity + 1);
-                    }else{
-                      setSelectedSizeAlert(true)
-                      setTimeout(()=> setSelectedSizeAlert(false), 3000)
+                    } else {
+                      setSelectedSizeAlert(true);
+                      setTimeout(() => setSelectedSizeAlert(false), 3000);
                     }
                   }
                 }}
               >
                 {quantity > 0 ? "Remove" : "Add to cart"}
               </button>
-              {selectedSizeAlert && <p className="error" style={{'width': '100%', 'textAlign': 'center', 'fontSize': '1rem'}}>Seleccione que talle desea</p>}
+              {quantity > 0 && (
+                <div className="btnQuantityContainer">
+                  <button
+                    className="btn btn-background small"
+                    onClick={() => {
+                      if (quantity !== 1) {
+                        decreaseCartQuantity(data._id);
+                        setQuantity(quantity - 1);
+                      } else {
+                        removeFromCart(data._id);
+                        setQuantity(0);
+                      }
+                    }}
+                  >
+                    -
+                  </button>
+                  <span style={{ fontSize: "2rem" }}>{quantity}</span>
+                  <button
+                    className="btn btn-background small"
+                    onClick={() => {
+                      if (quantity < 5) {
+                        increaseCartQuantity(data._id);
+                        setQuantity(quantity + 1);
+                      } else {
+                        if (!maxQuantityAlert) {
+                          setMaxQuantityAlert(true);
+                          setTimeout(() => setMaxQuantityAlert(false), 6000);
+                        }
+                      }
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
+              )}
+              <div className="modal-alertas">
+                {maxQuantityAlert && (
+                  <p className="error">
+                    Hay un maximo de 5 prendas por producto, para compras por
+                    mayor comuniquese con nosotros. Gracias
+                  </p>
+                )}
+                {selectedSizeAlert && (
+                  <p className="error">Seleccione que talle desea</p>
+                )}
+              </div>
             </div>
           </div>
         </article>

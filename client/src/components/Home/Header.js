@@ -9,7 +9,7 @@ const Header = () => {
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState();
 
-  const {isOpened, setIsOpened} = useModal()
+  const {isOpened, setIsOpened, setModalData} = useModal()
   
   useEffect(()=>{
     async function loadRandomProduct(){
@@ -30,7 +30,7 @@ const Header = () => {
             <p>Esta cargando...</p>
           ) : (
             <>
-            <ItemCard item={product} setIsOpened={setIsOpened} />
+            <ItemCard item={product} setIsOpened={setIsOpened} setModalData={setModalData}/>
             <a href="/products" className='btn btn-border'>Go to store</a>
             </>
           )}

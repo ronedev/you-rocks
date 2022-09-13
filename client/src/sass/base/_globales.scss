@@ -140,7 +140,13 @@ input, textarea{
   }
 }
 .error{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-size: 1rem;
   color: $error;
+  transition: all 1s;
+  animation: up 1s ease;
 }
 
 @keyframes up {
