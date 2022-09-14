@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import ShoppingCart from "../components/ShoppingCart";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const CartContext = React.createContext({})
 
 export const CartProvider = ({children})=>{
     
-    const [cartItems, setCartItems] = useState([])
+    const [cartItems, setCartItems] = useLocalStorage("cart", [])
 
     const [isOpen, setIsOpen] = useState(false)
 

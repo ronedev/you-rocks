@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {useSwipeable} from 'react-swipeable'
+import { JellyTriangle } from "@uiball/loaders";
 import { getProducts } from "../../services/product.js";
 import ItemCard from "./ItemCard";
 import useModal from "../../hooks/useModal.js";
@@ -51,7 +52,11 @@ const Offers = () => {
         </p>
       </div>
       {loading ? (
-        <p>Esta cargando...</p>
+        <JellyTriangle 
+        size={50}
+        speed={1.75} 
+        color="white" 
+       />
       ) : (
         <>
           <div className="slider">
@@ -80,7 +85,7 @@ const Offers = () => {
         </>
       )}
       <div className="container" style={{marginTop: '3rem'}}>
-        <a href="/products" className="btn btn-border">More products</a>
+        <a href="/store" className="btn btn-border">More products</a>
       </div>
       <div className="banner">
         <p className="left">

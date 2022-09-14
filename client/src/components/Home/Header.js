@@ -4,6 +4,7 @@ import { getRandomProduct } from '../../services/product';
 import ItemCard from './ItemCard'
 import useModal from '../../hooks/useModal.js'
 import ProductModal from '../Store/ProductModal';
+import { JellyTriangle } from '@uiball/loaders'
 
 const Header = () => {
   const [loading, setLoading] = useState(true);
@@ -27,11 +28,15 @@ const Header = () => {
         {!loading && <ProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={product}/>}
         <div className="randomCard">
           {loading ? (
-            <p>Esta cargando...</p>
+            <JellyTriangle 
+            size={50}
+            speed={1.75} 
+            color="white" 
+           />
           ) : (
             <>
             <ItemCard item={product} setIsOpened={setIsOpened} setModalData={setModalData}/>
-            <a href="/products" className='btn btn-border'>Go to store</a>
+            <a href="/store" className='btn btn-border'>Go to store</a>
             </>
           )}
         </div>

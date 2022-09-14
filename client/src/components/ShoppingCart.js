@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { JellyTriangle } from "@uiball/loaders";
 import { CartContext } from "../context/CartContext";
 import closeIcon from "../images/icons/cerrar.png";
 import { getProductById } from "../services/product.js";
@@ -40,6 +41,8 @@ const ShoppingCart = ({ isOpen }) => {
   }, [cartItems]);
 
   return (
+    <>
+    {isOpen && <div className="shopping-background" onClick={()=> closeCart()}></div>}
     <aside className={isOpen ? "shoppingCart visible" : "shoppingCart oculto"}>
       <div className="title">
         <h2>Mi carrito</h2>
@@ -47,7 +50,11 @@ const ShoppingCart = ({ isOpen }) => {
       </div>
       <div className="items-container">
         {isLoading ? (
-          <p>Esta cargando...</p>
+          <JellyTriangle 
+          size={50}
+          speed={1.75} 
+          color="white" 
+         />
         ) : (
           items.map((item) => (
             <div className="item">
@@ -76,6 +83,7 @@ const ShoppingCart = ({ isOpen }) => {
         <button className="btn btn-background">Realizar Pago</button>
       </div>
     </aside>
+    </>
   );
 };
 
