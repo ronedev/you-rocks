@@ -2,19 +2,24 @@ import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 
 const ItemCard = ({ item, setIsOpened, setModalData }) => {
-  const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, cartItems, removeFromCart } =
-    useContext(CartContext);
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    cartItems,
+    removeFromCart,
+  } = useContext(CartContext);
 
   const [quantity, setQuantity] = useState(getItemQuantity(item._id));
-  const [maxQuantityAlert, setMaxQuantityAlert] = useState(false)
+  const [maxQuantityAlert, setMaxQuantityAlert] = useState(false);
 
-  useEffect(()=>{
-    if(cartItems.find(product => product.id === item._id)){
-      setQuantity(getItemQuantity(item._id))
-    }else{
-      setQuantity(0)
+  useEffect(() => {
+    if (cartItems.find((product) => product.id === item._id)) {
+      setQuantity(getItemQuantity(item._id));
+    } else {
+      setQuantity(0);
     }
-  }, [cartItems])
+  }, [cartItems]);
 
   return (
     <article className="itemContainer">
@@ -26,10 +31,24 @@ const ItemCard = ({ item, setIsOpened, setModalData }) => {
         <h3>{item.title}</h3>
         <p>{item.description}</p>
       </div>
-      <div className="price">
-        <span>${item.price}</span>
+      <div className="price" style={item.offer ? {'gap': '3rem'} : {}}>
+        <span>
+          {item.offer ? (
+            <>
+              <p className="actual-price">${item.price}</p>
+              <p className="offered-price">${item.price - item.price * 0.2}</p>
+            </>
+          ) : (
+            `$${item.price}`
+          )}
+        </span>
         <div className="btnContainer">
-          {maxQuantityAlert && <p className="error">Hay un maximo de 5 prendas por producto, para compras por mayor comuniquese con nosotros. Gracias</p>}
+          {maxQuantityAlert && (
+            <p className="error">
+              Hay un maximo de 5 prendas por producto, para compras por mayor
+              comuniquese con nosotros. Gracias
+            </p>
+          )}
           <button
             className="btn btn-background"
             onClick={() => {
@@ -37,8 +56,8 @@ const ItemCard = ({ item, setIsOpened, setModalData }) => {
                 removeFromCart(item._id);
                 setQuantity(0);
               } else {
-                setModalData(item)
-                setIsOpened(true)
+                setModalData(item);
+                setIsOpened(true);
               }
             }}
           >
@@ -46,27 +65,37 @@ const ItemCard = ({ item, setIsOpened, setModalData }) => {
           </button>
           {quantity > 0 && (
             <div className="btnQuantityContainer">
-              <button className="btn btn-background small" onClick={()=>{
-                if(quantity !== 1){
-                  decreaseCartQuantity(item._id)
-                  setQuantity(quantity - 1)
-                }else{
-                  removeFromCart(item._id)
-                  setQuantity(0)
-                }
-              }}>-</button>
-              <span style={{'fontSize': '2rem'}}>{quantity}</span>
-              <button className="btn btn-background small" onClick={()=>{
-                if(quantity < 5){
-                  increaseCartQuantity(item._id)
-                  setQuantity(quantity + 1)
-                }else{
-                  if(!maxQuantityAlert){
-                    setMaxQuantityAlert(true)
-                    setTimeout(()=> setMaxQuantityAlert(false), 6000)
+              <button
+                className="btn btn-background small"
+                onClick={() => {
+                  if (quantity !== 1) {
+                    decreaseCartQuantity(item._id);
+                    setQuantity(quantity - 1);
+                  } else {
+                    removeFromCart(item._id);
+                    setQuantity(0);
                   }
-                }
-              }}>+</button>
+                }}
+              >
+                -
+              </button>
+              <span style={{ fontSize: "2rem" }}>{quantity}</span>
+              <button
+                className="btn btn-background small"
+                onClick={() => {
+                  if (quantity < 5) {
+                    increaseCartQuantity(item._id);
+                    setQuantity(quantity + 1);
+                  } else {
+                    if (!maxQuantityAlert) {
+                      setMaxQuantityAlert(true);
+                      setTimeout(() => setMaxQuantityAlert(false), 6000);
+                    }
+                  }
+                }}
+              >
+                +
+              </button>
             </div>
           )}
         </div>
