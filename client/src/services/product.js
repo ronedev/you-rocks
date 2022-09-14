@@ -95,3 +95,15 @@ export async function getSearchProduct(search){
     console.log(error)
   }
 }
+
+export async function getProductById(id){
+  try {
+    const response = await axios({
+      url: `${process.env.REACT_APP_BASE_URL}/product/get/${id}`,
+      method: "GET",
+    })
+    return response
+  } catch (error) {
+    console.log(error)
+  }
+}

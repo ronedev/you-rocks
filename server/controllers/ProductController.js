@@ -8,11 +8,14 @@ exports.addNewProduct = async (req, res, next)=>{
 
 exports.getOneProduct = async (req, res)=>{
     const {id} = req.params
-    const limit = 1
-    const offset = id
 
-    const product = await Product.findOne().skip(offset).limit(limit)
-    res.send('Por terminar')
+    try {
+        const product = await Product.findById(id)
+        if(product) return res.status(200).json(product)
+    } catch (error) {
+        console.log(error)
+        return res.status(error.code).send(error.message)
+    }
 }
 
 exports.getAllProducts = async (req, res)=>{
