@@ -37,12 +37,12 @@
         &.previuos, &.next{
             transform: scale(.9);
             opacity: .8;
-            z-index: 7;
+            z-index: 5;
         }
         &.selected{
             left: 0;
             opacity: 1;
-            z-index: 8;
+            z-index: 7;
             transform: scale(1);
         }
         &.previuos{

@@ -32,7 +32,7 @@ const ItemCard = ({ item, setIsOpened, setModalData }) => {
         <p>{item.description}</p>
       </div>
       <div className="price" style={item.offer ? {'gap': '3rem'} : {}}>
-        <span>
+        <div className="price-container">
           {item.offer ? (
             <>
               <p className="actual-price">${item.price}</p>
@@ -41,7 +41,7 @@ const ItemCard = ({ item, setIsOpened, setModalData }) => {
           ) : (
             `$${item.price}`
           )}
-        </span>
+        </div>
         <div className="btnContainer">
           {maxQuantityAlert && (
             <p className="error">

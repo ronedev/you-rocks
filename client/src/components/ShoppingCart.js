@@ -11,18 +11,21 @@ import deleteIcon from "../images/icons/delete.png";
 const ShoppingCart = ({ isOpen }) => {
   const { cartItems, closeCart, removeFromCart } = useContext(CartContext);
   const [items, setItems] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0)
   const [isLoading, setIsLoading] = useState(true);
 
   async function getCartItems() {
     const items = await Promise.all(
       cartItems.map(async (item) => {
         const response = await getProductById(item.id);
+        const price =  response.data.offer ? response.data.price - (response.data.price * 0.2) : response.data.price
+        setTotalPrice(actualPrice => actualPrice + (parseInt(price) * parseInt(item.quantity)) )
         const product = {
           title: response.data.title,
           id: item.id,
           description: response.data.description,
           quantity: item.quantity,
-          price: response.data.price,
+          price,
           size: item.size,
         };
         return product;
@@ -80,6 +83,9 @@ const ShoppingCart = ({ isOpen }) => {
             </div>
           ))
         )}
+        <div className="total">
+          <h3>Total a pagar : <span>${totalPrice}</span></h3>
+        </div>
         <button className="btn btn-background">Realizar Pago</button>
       </div>
     </aside>

@@ -1,11 +1,12 @@
 .shopping-background{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: $negro;
     opacity: .7;
+    z-index: 7;
 }
 
 .shoppingCart{
@@ -92,6 +93,25 @@
                 align-items: center;
                 text-transform: uppercase;
             }
+        }
+    }
+    .total{
+        font-family: $fuente_titulos;
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin: 0;
+        color: $negro;
+        letter-spacing: .1rem;
+        h3{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-shadow: -1px -1px 0 $principal, 1px -1px 0 $principal, -1px 1px 0 $principal, 1px 1px 0 $principal;
+        }
+        span{
+            font-size: 3rem;
+            text-shadow: none;
+            color: $principal;
         }
     }
 }
