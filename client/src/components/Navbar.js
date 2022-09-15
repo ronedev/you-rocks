@@ -43,6 +43,10 @@ const Navbar = () => {
         </div>
         ): (
           <div className="authentication">
+            <button className="cart-btn" onClick={()=> openCart()}>
+              <img src={cartIcon} alt="Carrito de compras" />
+              <div className="cart-quantity"><p>{cartQuantity}</p></div>
+            </button>
           <p>
             <a href="/signup">Sing up</a>{" "}
             <span>

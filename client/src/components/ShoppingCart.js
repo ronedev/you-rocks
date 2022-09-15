@@ -7,12 +7,16 @@ import sizeIcon from "../images/icons/size.png";
 import priceIcon from "../images/icons/price.png";
 import quantityIcon from "../images/icons/quantity.png";
 import deleteIcon from "../images/icons/delete.png";
+import { UserContext } from "../context/UserContext";
 
 const ShoppingCart = ({ isOpen }) => {
   const { cartItems, closeCart, removeFromCart } = useContext(CartContext);
+  const { actualUser } = useContext(UserContext)
+
   const [items, setItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0)
   const [isLoading, setIsLoading] = useState(true);
+  const [alertLogin, setAlertLogin] = useState(false)
 
   async function getCartItems() {
     const items = await Promise.all(
@@ -46,7 +50,8 @@ const ShoppingCart = ({ isOpen }) => {
   return (
     <>
     {isOpen && <div className="shopping-background" onClick={()=> closeCart()}></div>}
-    <aside className={isOpen ? "shoppingCart visible" : "shoppingCart oculto"}>
+    {isOpen ? (
+      <aside className={isOpen ? "shoppingCart visible" : "shoppingCart oculto"}>
       <div className="title">
         <h2>Mi carrito</h2>
         <img src={closeIcon} alt="Cerrar carrito" onClick={() => closeCart()} />
@@ -86,9 +91,18 @@ const ShoppingCart = ({ isOpen }) => {
         <div className="total">
           <h3>Total a pagar : <span>${totalPrice}</span></h3>
         </div>
-        <button className="btn btn-background">Realizar Pago</button>
+        {alertLogin && <p className="error">Debe ingresar a su cuenta antes de realizar el pago</p>}
+        <button className="btn btn-background"
+          onClick={()=>{
+            if(!actualUser){
+              setAlertLogin(true)
+              setTimeout(()=> setAlertLogin(false), 5000)
+            }
+          }}
+        >Realizar Pago</button>
       </div>
     </aside>
+    ): null}
     </>
   );
 };
