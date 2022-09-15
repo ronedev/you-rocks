@@ -1,0 +1,26 @@
+#iconMenu{
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: .8rem;
+    cursor: pointer;
+    span{
+        width: 3rem;
+        height: .2rem;
+        background-color: $principal;
+        border-radius: .4rem;
+        transition: all .8s ease;
+        &.linea1.close{
+            transform: rotateZ(40deg) translateX(1.4rem);
+        }
+        &.linea3.close{
+            transform: rotateZ(-40deg) translateX(1.4rem);
+        }
+        &.linea2.close{
+            width: 0;
+            height: 0;
+        }
+    }
+}

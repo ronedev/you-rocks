@@ -4,6 +4,7 @@ import menuIcon from "../images/icons/menu.png";
 import { UserContext } from "../context/UserContext";
 import { logoutUser } from "../services/user";
 import { CartContext } from "../context/CartContext";
+import MenuIcon from "./menuIcon";
 
 const Navbar = () => {
   const { actualUser, setActualUser } = useContext(UserContext);
@@ -25,7 +26,9 @@ const Navbar = () => {
           <a href="/" id="logo">
             You Rock
           </a>
-          <img src={menuIcon} alt="Abrir menu" id="menuIcon" onClick={()=> setOpenMenu(!openMenu)} />
+          <div className="menuIconContainer" onClick={()=> setOpenMenu(!openMenu)}>
+            <MenuIcon isOpen={openMenu} />
+          </div>
           <div className={openMenu ? 'links-authentication aparecer' : 'links-authentication'} >
             <ul className="links">
               <a href="/">Home</a>
