@@ -8,25 +8,63 @@
     padding: 1.5rem 4rem;
     background-color: #0e0e0e;
     z-index: 10;
+    #logo{
+        color: $principal;
+        font-family: $fuente_titulos;
+        font-size: 4.8rem;
+        text-transform: uppercase;
+        width: 25rem;
+        &:hover{
+            color: #cefa49;
+        }
+    }
+    #menuIcon{
+        display: none;
+        @include telefono{
+            display: block;
+            cursor: pointer;
+        }
+    }
     .enlaces{
         display: flex;
         align-items: center;
+        width: 100%;
         gap: 2rem;
-        #logo{
-            color: $principal;
-            font-family: $fuente_titulos;
-            font-size: 4.8rem;
-            text-transform: uppercase;
-            &:hover{
-                color: #cefa49;
-            }
-        }
         .links{
             display: flex;
             align-items: center;
             gap: 2rem;
+            padding: 0;
             a{
                 font-size: 1.5rem;
+            }
+            @include telefono{
+                flex-direction: column;
+            }
+        }
+        @include telefono{
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+    .links-authentication{
+        z-index: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include telefono{
+            flex-direction: column;
+            width: 30%;
+            position: absolute;
+            top: 100%;
+            left: 200%;
+            background-color: $negro;
+            padding: 2rem 0;
+            transition: all 1s;
+            &.aparecer{
+                animation: down 1s ease;
+                left: 70%;
             }
         }
     }
@@ -34,7 +72,11 @@
         font-size: 1.2rem;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 2rem;
+        @include telefono{
+            gap: 4rem;
+        }
         button{
             color: $blanco;
             cursor: pointer;
@@ -70,3 +112,11 @@
     }
 }
 
+@keyframes down {
+    from{
+        left: 200%;
+    }
+    to{
+        left: 70%;
+    }
+}
