@@ -18,17 +18,21 @@ const Footer = () => {
             <a href="/">Centro de ayuda</a>
         </section>
         <section className='metodos-redes'>
+            <div className="metodos">
             <h3>Métodos de pago</h3>
             <div className="flex-image">
                 <img src={paypal} alt="paypal" />
                 <img src={visa} alt="visa" />
                 <img src={googlePay} alt="gplay" />
             </div>
+            </div>
+            <div className="redes">
             <h3>Redes sociales</h3>
             <div className="flex-image">
                 <img src={instagram} alt="instagram" />
                 <img src={whatsapp} alt="whatsapp" />
                 <img src={facebook} alt="facebook" />
+            </div>
             </div>
         </section>
         <section className='about-us'>

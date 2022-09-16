@@ -5,6 +5,10 @@
     justify-content: center;
     gap: 6rem;
     height: 100%;
+    @include telefono{
+        flex-direction: column-reverse;
+        gap: rem;
+    }
     .randomCard{
         display: grid;
         align-content: center;
@@ -31,6 +35,16 @@
             position: absolute;
             top: 42%;
             left: 30%;
+        }
+        @include telefono{
+            img{
+                height: 45rem;
+            }
+            h1{
+                font-size: 10rem;
+                top: 65%;
+                left: 0%;
+            }
         }
     }
 }

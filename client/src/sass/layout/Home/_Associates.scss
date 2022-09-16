@@ -3,8 +3,15 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 4rem;
     margin: 8rem 0;
+    @include telefono{
+        grid-template-columns: repeat(2, 1fr);
+        margin: 2rem 0;
+    }
     img{
         transition: all .8s ease;
+        @include telefono{
+            width: 10rem;
+        }
     }
     img:hover{
         transform: scale(1.2);

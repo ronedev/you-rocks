@@ -8,11 +8,20 @@
     justify-content: space-evenly;
     padding: 2.5rem 4rem;
     color: $negro;
+    @include telefono{
+        width: 20rem;
+        height: 35rem;
+        padding: 2rem;
+    }
     .image{
         width: 30rem;
         height: 30rem;
         background-size: cover;
         background-repeat: no-repeat;
+        @include telefono{
+            width: 20rem;
+            height: 20rem;
+        }
     }
     .description{
         width: 100%;
@@ -29,6 +38,14 @@
             text-align: justify;
             margin: 0 0 1rem 0;
         }
+        @include telefono{
+            h3{
+                font-size: 1.5rem;
+            }
+            p{
+                font-size: 1rem;
+            }
+        }
     }
     .price{
         width: 100%;
@@ -37,26 +54,42 @@
         justify-content: space-between;
         gap: 2rem;
         position: relative;
+        @include telefono{
+            gap: 1rem;   
+        }
         .price-container{
             font-size: 3.2rem;
             font-family: $fuente_titulos;
             font-weight: 900;
             height: 100%;
+            @include telefono{
+                font-size: 2rem;
+            }
             .offered-price{
                 position: absolute;
                 top: 0%;
                 left: 5%;
                 font-size: 2.5rem;
+                @include telefono{
+                    font-size: 2rem;
+                }
             }
             .actual-price{
                 text-decoration: line-through $principal;
                 color: rgba(0, 0, 0, 0.812);
                 margin: 0;
                 font-size: 2.2rem;
+                @include telefono{
+                    font-size: 1.8rem;
+                }
             }
         }
         .btn{
             font-size: 1.8rem;
+            @include telefono{
+                font-size: 1.2rem;
+                padding: 1rem;
+            }
         }
         .btnContainer{
             display: grid;
@@ -75,5 +108,8 @@
     .btn.small{
         width: 4rem;
         padding: .5rem 1rem;
+        @include telefono{
+            width: 2.5rem;
+        }
     }
 }
