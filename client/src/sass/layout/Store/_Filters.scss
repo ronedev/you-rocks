@@ -5,10 +5,19 @@
     justify-content: center;
     gap: 3rem;
     transition: all .5s ease;
+    @include telefono{
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        gap: 1.5rem;
+    }
     .btn{
         display: flex;
         align-items: center;
         gap: 2rem;
+        @include telefono{
+            width: 100%;
+        }
     }
     .btn-border{
         text-transform: none;
@@ -44,6 +53,12 @@
     height: 0;
     opacity: 0;
     animation: desaparecer .4s ease;
+}
+
+.filter, .order{
+    @include telefono{
+        width: 100%;
+    }
 }
 
 .order-options{

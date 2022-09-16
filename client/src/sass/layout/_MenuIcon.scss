@@ -1,7 +1,10 @@
 #iconMenu{
+    display: none;
+    @include telefono{
+        display: grid;
+    }
     width: 3rem;
     height: 3rem;
-    display: grid;
     align-content: center;
     justify-items: center;
     gap: .8rem;

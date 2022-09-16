@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { ProductContext } from "../../context/ProductsContext";
 import useModal from "../../hooks/useModal";
-import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal";
 import rightIcon from '../../images/icons/right.png'
 import leftIcon from '../../images/icons/left.png'

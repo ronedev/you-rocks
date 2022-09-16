@@ -18,13 +18,6 @@
             color: #cefa49;
         }
     }
-    #menuIcon{
-        display: none;
-        @include telefono{
-            display: block;
-            cursor: pointer;
-        }
-    }
     .enlaces{
         display: flex;
         align-items: center;

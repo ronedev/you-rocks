@@ -8,18 +8,13 @@
     margin-bottom: 2rem;
     background-image: url('../../../images/fondo2.webp');
     background-position: center;
-    h3, span{
-        font-family: $fuente_titulos;
-        text-transform: uppercase;
-        color: transparent;
-        // color: $principal;
+    background-size: cover;
+    height: 40rem;
+    @include telefono{
+        height: 20rem;
     }
-    h3{
-        font-size: 23rem;
-        margin: 0;
-    }
-    span{
-        font-size: 10rem;
+    @media (max-width: 400px){
+        height: 15rem;
     }
     .column{
         height: 100%;

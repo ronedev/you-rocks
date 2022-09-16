@@ -14,6 +14,9 @@
         align-content: center;
         gap: 1rem;
     }
+    @media (max-width: 480px) {
+        padding: 2rem;
+    }
     h3{
         font-family: $fuente_titulos;
         font-size: 1.9rem;
@@ -55,6 +58,9 @@
             display: flex;
             gap: 1rem;
             cursor: pointer;
+            @include telefono{
+                justify-content: center;
+            }
         }
     }
     .about-us{
@@ -76,6 +82,11 @@
             grid-area: d;
             display: grid;
             align-content: center;
+            .btn-container{
+                .btn{
+                    padding: 1rem 2rem;
+                }
+            }
         }
     }
 }

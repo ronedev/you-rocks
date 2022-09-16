@@ -12,6 +12,12 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     padding: 2rem 0;
+    @include telefono{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 480px){
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .pagination{
@@ -47,5 +53,9 @@
         &:hover{
             color: $principal;
         }
+    }
+    @media (max-width: 480px){
+        font-size: 1rem;
+        gap: 1rem;
     }
 }
