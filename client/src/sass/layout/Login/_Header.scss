@@ -3,6 +3,9 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     position: relative;
+    @include telefono{
+        gap: 1rem;
+    }
     .form-container{
         h2{
             font-family: $fuente_titulos;
@@ -12,7 +15,9 @@
             margin: 0;
             text-transform: uppercase;
             text-align: start;
-            width: 60%;
+            @include telefono{
+                font-size: 5rem;
+            }
         }
         display: flex;
         flex-direction: column;
@@ -28,6 +33,16 @@
             width: 60%;
             display: flex;
             justify-content: space-between;
+            @include telefono{
+                width: 100%;
+                gap: 2rem;
+            }
+        }
+        @include telefono{
+            padding: 1rem;
+            form{
+                width: 100%;
+            }
         }
     }
     .description{

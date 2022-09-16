@@ -17,7 +17,6 @@ const Header = () => {
         <form action="" className="contact-form">
           <div
             className="campos-flex"
-            style={{ display: "flex", justifyContent: "space-between" }}
           >
             <div className="campo">
               <label id="name">Name:</label>

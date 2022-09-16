@@ -10,6 +10,12 @@
         background-position: center;
         background-size: cover;
     }
+    @include telefono{
+        gap: 1rem;
+        h2{
+            font-size: 5rem;
+        }
+    }
 }
 
 
@@ -18,7 +24,25 @@
     display: grid;
     gap: 1rem;
     margin-bottom: 2rem;
+    @include telefono{
+        justify-content: center;
+    }
+    .campos-flex{
+        display: flex;
+        justify-content: center;
+        @include telefono{
+            display: grid;
+            gap: 1rem;
+            width: 100%;
+            .campo{
+                width: 100%;
+            }
+        }
+    }
     input{
         width: 25rem;
+        @include telefono{
+            width: 100%;            
+        }
     }
 }
