@@ -10,6 +10,14 @@
     height: 2rem;
 }
 
+#close-icon{
+    width: 3rem;
+    cursor: pointer;
+    @include telefono{
+        width: 2rem;
+    }
+}
+
 .product-modal{    
     width: 80rem;
     background-color: $negro;
@@ -18,23 +26,48 @@
     align-content: center;
     justify-items: end;
     z-index: 10;
+    @include telefono{
+        width: 80%;
+        gap: 2rem;
+    }
     .modal-info{
         display: grid;
         align-content: center;
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
+        @include telefono{
+            grid-template-columns: repeat(1, 1fr);
+            justify-items: center;
+        }
         .images-container{
             display: flex;
             gap: .5rem;
+            @include telefono{
+                width: 80%;
+                display: grid;
+            }
             img{
                 width: 32rem;
+                @include telefono{
+                    width: 100%;
+                }
             }
             .secondary-images{
                 display: grid;
                 gap: .5rem;
+                @include telefono{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 1%;
+                }
                 img{
                     width: 8rem;
                     cursor: pointer;
+                    @include telefono{
+                        height: 100%;
+                        width: 24%;
+                    }
                 }
             }
         }
@@ -54,6 +87,14 @@
                 font-family: $fuente_base;
                 font-size: 1.2rem;
             }
+            @include telefono{
+                h2{
+                    font-size: 1.6rem;
+                }
+                p{
+                    font-size: 1rem;
+                }
+            }
             .sizes-price{
                 display: flex;
                 align-items: center;
@@ -63,6 +104,22 @@
                 .talle.selected{
                     background-color: $principal;
                     color: $negro;
+                }
+                @media (max-width: 470px) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                @include telefono{
+                    font-size: 2rem;
+                    gap: 1rem;
+                    .sizes{
+                        gap: 1rem;
+                        .talle{
+                            width: 2rem;
+                            height: 2rem;
+                            font-size: 1rem;
+                        }
+                    }
                 }
             }
         }

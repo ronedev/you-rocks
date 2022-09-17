@@ -17,6 +17,10 @@
         &:hover{
             color: #cefa49;
         }
+        @include telefono{
+            width: 15rem;
+            font-size: 3rem;
+        }
     }
     .enlaces{
         display: flex;
@@ -48,7 +52,7 @@
         justify-content: space-between;
         @include telefono{
             flex-direction: column;
-            width: 30%;
+            width: 40%;
             position: absolute;
             top: 100%;
             left: 200%;
@@ -57,7 +61,7 @@
             transition: all 1s;
             &.aparecer{
                 animation: down 1s ease;
-                left: 70%;
+                left: 60%;
             }
         }
     }

@@ -41,7 +41,7 @@ const ProductModal = ({ isOpened, setIsOpened, data }) => {
           <img
             src={closeIcon}
             alt="Cerrar modal icono"
-            style={{ width: "3rem", cursor: "pointer" }}
+            id="close-icon"
             onClick={() => setIsOpened(false)}
           />
           <div className="modal-info">
