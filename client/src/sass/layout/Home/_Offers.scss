@@ -35,6 +35,9 @@
     @include telefono{
         height: 35rem;       
     }
+    @media (max-width: 400px) {
+        width: 25rem;
+    }
     .slide-item{
         position: absolute;
         transition: all .6s ease;
@@ -54,17 +57,26 @@
             @include telefono{
                 left: 20%;
             }
+            @media (max-width: 350px) {
+             left: 10%;   
+            }
         }
         &.previuos{
             left: -50%;
             @include telefono{
                 left: 5%;
-            }   
+            }
+            @media (max-width: 350px) {
+                left: -5%;   
+            }
         }
         &.next{
             left: 70%;
             @include telefono{
                 left: 35%;
+            }
+            @media (max-width: 350px) {
+                left: 30%;   
             }
         }
     }

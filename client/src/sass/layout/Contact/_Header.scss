@@ -29,11 +29,11 @@
     }
     .campos-flex{
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        width: 100%;
         @include telefono{
             display: grid;
             gap: 1rem;
-            width: 100%;
             .campo{
                 width: 100%;
             }
