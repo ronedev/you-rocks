@@ -14,13 +14,15 @@ const LazyOffers = () => {
   return (
     <div ref={elementRef}>
         <Suspense fallback={
+          <div className='lazy'>
             <JellyTriangle 
             size={50}
             speed={1.75} 
             color="white" 
            />
+          </div>
         }>
-            {isNearScreen ? <Offers /> : <JellyTriangle size={50} speed={1.75} color="white" />}
+            {isNearScreen ? <Offers /> : <div className='lazy'><JellyTriangle size={50} speed={1.75} color="white" /></div>}
         </Suspense>
     </div>
   )

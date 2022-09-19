@@ -22,7 +22,7 @@ export const useNearScreen = ({elementRef})=>{
                 import('intersection-observer')
         ).then(()=>{
             observer = new IntersectionObserver(onChange, {
-                rootMargin: '50px'
+                rootMargin: '10px'
             })
             observer.observe(elementRef.current)
         })

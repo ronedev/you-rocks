@@ -37,6 +37,7 @@ input, textarea{
 }
 
 .container{
+  height: 100%;
   width: 100%;
   display: grid;
   align-content: center;
@@ -147,6 +148,22 @@ input, textarea{
   color: $error;
   transition: all 1s;
   animation: up 1s ease;
+}
+.header{
+  min-height: 100vh;
+}
+
+.lazy{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50rem;
+  height: 100%;
+  width: 98vw;
+  margin-top: 10rem;
+  @include telefono{
+    margin-top: 0;
+  }
 }
 
 @keyframes up {

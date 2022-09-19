@@ -53,11 +53,13 @@ const Offers = () => {
         </p>
       </div>
       {loading ? (
-        <JellyTriangle 
-        size={50}
-        speed={1.75} 
-        color="white" 
-       />
+        <div className="lazy">
+          <JellyTriangle 
+          size={50}
+          speed={1.75} 
+          color="white" 
+         />
+        </div>
       ) : (
         <>
           <div className="slider">
