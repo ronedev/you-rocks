@@ -13,6 +13,7 @@ const Offers = () => {
 
   const {isOpened, setIsOpened, setModalData, modalData} = useModal()
 
+
   const handlers = useSwipeable({
     onSwipedLeft: (e) =>
       sliderItemSelected !== products.length - 1
@@ -39,7 +40,7 @@ const Offers = () => {
     loadProducts();
   }, []);
 
-  return (
+  return (    
     <section className="container">
       <ProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={modalData} />
       <div className="banner">
