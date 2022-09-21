@@ -1,4 +1,4 @@
-# You Rocks :rock:
+# You Rocks 🤘
 
 Proyecto e-commerce ficticio para practicas con Express, Mongo y Mongoose en el back y React y Sass en el front
 
