@@ -15,6 +15,12 @@
     }
     @media (max-width: 480px) {
         padding: 2rem 1rem;
+        width: 17rem;
+    }
+    @media (max-width: 400px) {
+        width: 25rem;
+        height: 35rem;
+        padding: 2.5rem 3rem;
     }
     .image{
         width: 30rem;
@@ -22,6 +28,14 @@
         background-size: cover;
         background-repeat: no-repeat;
         @include telefono{
+            width: 20rem;
+            height: 20rem;
+        }
+        @media (max-width: 480px) {
+            width: 17rem;
+            height: 15rem;
+        }
+        @media (max-width: 400px) {
             width: 20rem;
             height: 20rem;
         }
