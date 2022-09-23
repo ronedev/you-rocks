@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import Aboutus from "./pages/Aboutus.js";
+import Api from "./pages/Api.js";
 import Contact from "./pages/Contact.js";
 import Home from "./pages/Home.js";
 import Login from "./pages/Login.js";
@@ -21,6 +22,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/api" element={<Api />} />
       </Routes>
     </BrowserRouter>
   );

@@ -34,6 +34,7 @@ const Navbar = () => {
               <a href="/">Home</a>
               <a href="/store">Products</a>
               <a href="/about">About Us</a>
+              <a href="/api">API</a>
             </ul>
             {actualUser ? (
               <div className="authentication">

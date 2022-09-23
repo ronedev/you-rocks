@@ -1,0 +1,41 @@
+.api-input{
+    width: 100%;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    h3{
+        font-size: 2.5rem;
+        font-family: $fuente_titulos;
+        text-shadow: -1px -1px 0 $principal, 1px -1px 0 $principal, -1px 1px 0 $principal, 1px 1px 0 $principal;
+        color: $negro;
+    }
+    .api-form{
+        display: flex;
+        align-items: center;
+        border: 1px solid $principal;
+        label{
+            background-color: $gris;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            color: $principal;
+        }
+        input{
+            border: none;
+            color: $blanco;
+        }
+        .btn-flex{
+            display: flex;
+            .btn{
+                display: flex;
+                align-items: center;
+                padding: 0 1rem;
+                #copy{
+                    width: 2rem;
+                    margin: .5rem 0;
+                }
+            }
+        }
+    }
+}
