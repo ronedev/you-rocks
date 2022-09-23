@@ -16,6 +16,23 @@
         justify-items: center;
         gap: 2rem;
         padding: 0 4rem;
+        .itemContainer{
+            @include telefono{
+                width: 25rem;
+                height: 35rem;
+                padding: 2rem;
+            }
+            @media (max-width: 480px) {
+                width: 25rem;
+                height: 35rem;
+                padding: 2rem;
+            }
+            @media (max-width: 400px) {
+                width: 25rem;
+                height: 35rem;
+                padding: 2rem;
+            }
+        }
     }
     .imageAndTitle{
         display: flex;

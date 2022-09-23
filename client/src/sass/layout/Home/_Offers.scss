@@ -80,6 +80,18 @@
             }
         }
     }
+    .itemContainer{
+        @include telefono{
+            width: 20rem;
+            height: 35rem;
+            padding: 2rem;            
+        }
+        @media (max-width: 400px) {
+            width: 20rem;
+            height: 35rem;
+            padding: 2rem;
+        }
+    }
 }
 .dot-container{
     display: flex;

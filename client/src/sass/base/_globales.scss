@@ -15,6 +15,10 @@ body{
   font-family: $fuente_base;
 }
 
+#root{
+  overflow: hidden;
+}
+
 a{
   color: $blanco;
   text-decoration: none;
