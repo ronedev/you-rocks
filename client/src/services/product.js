@@ -1,5 +1,17 @@
 import axios from 'axios'
 
+export async function apiCall(url){
+  try {
+    const response = await axios({
+      url,
+      method: 'GET'
+    })
+    return response
+  } catch (error) {
+    return error    
+  }
+}
+
 export async function getAllProducts(page){
   try{
     const response = await axios({
