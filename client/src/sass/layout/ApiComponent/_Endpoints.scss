@@ -1,0 +1,37 @@
+.endpointsSection{
+    padding: 2rem 8rem;
+    h3{
+        font-size: 3.5rem;
+        margin-top: 0;
+        font-family: $fuente_titulos;
+        text-shadow: -1px -1px 0 $principal, 1px -1px 0 $principal, -1px 1px 0 $principal, 1px 1px 0 $principal;
+        color: $negro;
+    }
+    ul{
+        padding: 0;
+        li{
+            list-style: none;
+        }
+    }
+    .endpoint{
+        .title{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.6rem;
+            span{
+                font-family: $fuente_base;
+                background-color: $gris;
+                padding: 1rem;
+            }
+            .method{
+                padding: 1rem;
+                border-radius: .5rem;
+                background-color: $principal;
+            }
+        }
+        p{
+            font-size: 1.4rem;
+        }
+    }
+}
