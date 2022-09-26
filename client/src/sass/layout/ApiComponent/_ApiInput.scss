@@ -4,10 +4,20 @@
     align-content: center;
     justify-items: center;
     h3{
-        font-size: 2.5rem;
+        font-size: 3.5rem;
+        margin-top: 0;
         font-family: $fuente_titulos;
         text-shadow: -1px -1px 0 $principal, 1px -1px 0 $principal, -1px 1px 0 $principal, 1px 1px 0 $principal;
         color: $negro;
+    }
+    p{
+        text-align: center;
+        width: 46.02rem;
+        span{
+            color: $principal;
+            cursor: pointer;
+            text-decoration: underline;
+        }
     }
     .api-form{
         display: flex;
