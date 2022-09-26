@@ -18,11 +18,18 @@
             cursor: pointer;
             text-decoration: underline;
         }
+        @include telefono{
+            width: 80%;
+        }
     }
     .api-form{
         display: flex;
         align-items: center;
         border: 1px solid $principal;
+        @include telefono{
+            display: grid;
+            align-items: center;
+        }
         label{
             background-color: rgb(47, 47, 47);
             height: 100%;
@@ -31,10 +38,18 @@
             padding: 0 1rem;
             color: $principal;
             font-size: 1.2rem;
+            @include telefono{
+                font-size: 1rem;
+                padding: .5rem;
+            }
         }
         input{
             border: none;
             color: $blanco;
+            font-size: 1.2rem;
+            @include telefono{
+                font-size: 1rem;
+            }
         }
         .btn-flex{
             display: flex;
@@ -45,6 +60,12 @@
                 #copy{
                     width: 2rem;
                     margin: .5rem 0;
+                    @include telefono{
+                        width: 1.5rem;
+                    }
+                }
+                @include telefono{
+                    padding: 0 .5rem;
                 }
             }
         }
@@ -62,6 +83,12 @@
             height: 40rem;
             overflow: hidden;
             overflow-y: scroll;
+            @include telefono{
+                padding: 1rem;
+                width: 80%;
+                font-size: 1rem;
+                overflow-x: scroll;
+            }
         }
     }
 }

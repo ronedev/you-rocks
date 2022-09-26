@@ -24,6 +24,7 @@
     p{
         font-family: $fuente_base;
         font-size: 1.4rem;
+        margin: 0;
         @include telefono{
             font-size: 1.2rem;
         }

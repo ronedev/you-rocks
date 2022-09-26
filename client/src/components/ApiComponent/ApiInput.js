@@ -63,8 +63,8 @@ const ApiInput = () => {
       <h3>¡Intentalo!</h3>
       <form className="api-form" onClick={handleSubmit}>
         <label>https://you-rocks-backend.vercel.app/</label>
-        <input type="text" onChange={handleInputChange} value={inputValue} />
         <div className="btn-flex">
+        <input type="text" onChange={handleInputChange} value={inputValue} />
           <button className="btn" onClick={copyUrlToClipboard}>
             <img src={copyIcon} alt="Copiar URL" id="copy" />
           </button>
