@@ -1,13 +1,12 @@
 import React, { useContext, useState } from "react";
 import cartIcon from "../images/icons/cart.png";
-import menuIcon from "../images/icons/menu.png";
 import { UserContext } from "../context/UserContext";
 import { logoutUser } from "../services/user";
 import { CartContext } from "../context/CartContext";
 import MenuIcon from "./menuIcon";
 
 const Navbar = () => {
-  const { actualUser, setActualUser } = useContext(UserContext);
+  const { actualUser, setActualUser, adminUser } = useContext(UserContext);
   const { cartQuantity, openCart } = useContext(CartContext);
 
   const [openMenu, setOpenMenu] = useState(false)
@@ -19,6 +18,7 @@ const Navbar = () => {
     }
   }
 
+  console.log(adminUser)
   return (
     <section className="container">
       <nav className="navbar">

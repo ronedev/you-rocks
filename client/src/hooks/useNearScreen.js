@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react'
 export const useNearScreen = ({elementRef})=>{
     const [isNearScreen, setShow] = useState(false)
 
-    console.log(elementRef)
-
     useEffect(()=>{
         let observer
 
