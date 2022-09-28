@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
+import { UserContext } from "../../context/UserContext";
 
 const ItemCard = ({ item, setIsOpened, setModalData }) => {
+  const { adminUser } = useContext(UserContext);
+
   const {
     getItemQuantity,
     increaseCartQuantity,
@@ -31,7 +34,7 @@ const ItemCard = ({ item, setIsOpened, setModalData }) => {
         <h3>{item.title}</h3>
         <p>{item.description}</p>
       </div>
-      <div className="price" style={item.offer ? {'gap': '3rem'} : {}}>
+      <div className="price" style={item.offer ? { gap: "3rem" } : {}}>
         <div className="price-container">
           {item.offer ? (
             <>
@@ -49,20 +52,36 @@ const ItemCard = ({ item, setIsOpened, setModalData }) => {
               comuniquese con nosotros. Gracias
             </p>
           )}
-          <button
-            className="btn btn-background"
-            onClick={() => {
-              if (quantity > 0) {
-                removeFromCart(item._id);
-                setQuantity(0);
-              } else {
-                setModalData(item);
-                setIsOpened(true);
-              }
-            }}
-          >
-            {quantity > 0 ? "Remove" : "Add to cart"}
-          </button>
+          {adminUser ? (
+            <>
+              <button
+                className="btn btn-background"
+                onClick={() => {
+                  setModalData(item);
+                  setIsOpened(true);
+                }}
+              >
+                Modificar producto
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                className="btn btn-background"
+                onClick={() => {
+                  if (quantity > 0) {
+                    removeFromCart(item._id);
+                    setQuantity(0);
+                  } else {
+                    setModalData(item);
+                    setIsOpened(true);
+                  }
+                }}
+              >
+                {quantity > 0 ? "Remove" : "Add to cart"}
+              </button>
+            </>
+          )}
           {quantity > 0 && (
             <div className="btnQuantityContainer">
               <button

@@ -5,8 +5,12 @@ import ProductModal from "./ProductModal";
 import rightIcon from '../../images/icons/right.png'
 import leftIcon from '../../images/icons/left.png'
 import ItemCard from "../Home/ItemCard";
+import { UserContext } from "../../context/UserContext";
+import UpdateProductModal from "../Admin/UpdateProductModal";
 
 const Products = () => {
+  const { adminUser } = useContext(UserContext)
+
   const {
     actualAction,
     data,
@@ -46,7 +50,7 @@ const Products = () => {
   return (
     <section className="products-container">
       <div className="products-grid">
-        <ProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={modalData}/>
+        {adminUser ? <UpdateProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={modalData}/> : <ProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={modalData}/>}
         {data.products.map((product) => (
           <ItemCard item={product} setModalData={setModalData} setIsOpened={setIsOpened} />
         ))}

@@ -4,11 +4,14 @@ import filterIcon from "../../images/icons/filter.png";
 import downArrowIcon from "../../images/icons/down-arrow.png";
 import reloadIcon from "../../images/icons/reload.png";
 import { ProductContext } from "../../context/ProductsContext";
+import { UserContext } from "../../context/UserContext";
 
 const Filters = () => {
   const [filter, setFilter] = useState(false);
   const [order, setOrder] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+
+  const { adminUser } = useContext(UserContext)
 
   const {
     limitProducts,
@@ -65,6 +68,11 @@ const Filters = () => {
                 onClick={() => getAllProducts(limitProducts)}
               />
             </button>
+        {adminUser && (
+          <div className="agregar">
+            <button className="btn btn-background">Agregar producto</button>
+          </div>
+        )}
         <div className="filter">
           <div className="filter-buttons">
             <button

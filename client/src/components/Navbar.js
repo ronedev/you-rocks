@@ -18,7 +18,6 @@ const Navbar = () => {
     }
   }
 
-  console.log(adminUser)
   return (
     <section className="container">
       <nav className="navbar">
@@ -35,6 +34,7 @@ const Navbar = () => {
               <a href="/store">Products</a>
               <a href="/about">About Us</a>
               <a href="/api">API</a>
+              {actualUser && <a href="/admin">Admin</a>}
             </ul>
             {actualUser ? (
               <div className="authentication">
