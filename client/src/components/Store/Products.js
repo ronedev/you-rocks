@@ -50,7 +50,7 @@ const Products = () => {
   return (
     <section className="products-container">
       <div className="products-grid">
-        {adminUser ? <UpdateProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={modalData}/> : <ProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={modalData}/>}
+        {adminUser ? <UpdateProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={modalData} setModalData={setModalData}/> : <ProductModal isOpened={isOpened} setIsOpened={setIsOpened} data={modalData}/>}
         {data.products.map((product) => (
           <ItemCard item={product} setModalData={setModalData} setIsOpened={setIsOpened} />
         ))}

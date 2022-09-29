@@ -2,7 +2,7 @@ import React from "react";
 import deleteIcon from "../../images/icons/delete.png";
 import closeIcon from "../../images/icons/cerrar.png";
 
-const UpdateProductModal = ({ isOpened, setIsOpened, data }) => {
+const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
   if (isOpened) {
     return (
       <section
@@ -86,23 +86,23 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data }) => {
               <label id="sizes">Talles disponibles</label>
               <div className="campo-checkbox-radio">
                 <label id="s">S</label>
-                <input type="checkbox" name="s" id="s" checked={data.sizes.includes('s') ? true : false }/>
+                <input type="checkbox" name="s" id="s" checked={data.sizes?.includes('s') ? true : false }/>
               </div>
               <div className="campo-checkbox-radio">
                 <label id="m">M</label>
-                <input type="checkbox" name="m" id="m" checked={data.sizes.includes('m') ? true : false }/>
+                <input type="checkbox" name="m" id="m" checked={data.sizes?.includes('m') ? true : false }/>
               </div>
               <div className="campo-checkbox-radio">
                 <label id="l">L</label>
-                <input type="checkbox" name="l" id="l" checked={data.sizes.includes('l') ? true : false }/>
+                <input type="checkbox" name="l" id="l" checked={data.sizes?.includes('l') ? true : false }/>
               </div>
               <div className="campo-checkbox-radio">
                 <label id="xl">XL</label>
-                <input type="checkbox" name="xl" id="xl" checked={data.sizes.includes('xl') ? true : false }/>
+                <input type="checkbox" name="xl" id="xl" checked={data.sizes?.includes('xl') ? true : false }/>
               </div>
               <div className="campo-checkbox-radio">
                 <label id="xxl">XXL</label>
-                <input type="checkbox" name="xxl" id="xxl" checked={data.sizes.includes('xxl') ? true : false }/>
+                <input type="checkbox" name="xxl" id="xxl" checked={data.sizes?.includes('xxl') ? true : false }/>
               </div>
             </div>
             <div className="campo select">
@@ -119,11 +119,11 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data }) => {
           <div className="campo">
             <label id="images">Imagenes</label>
             <div className="campos-flex imagenes">
-              {data.images.map((image) => (
+              {data.images?.map((image) => (
                 <>
                   <div className="imageContainer">
                     <img src={image} alt="Imagen del producto" />
-                    <div className="delete">
+                    <div className="delete" onClick={()=> setModalData(prev => {return {...prev, images: prev.images.filter(img => img !== image)}})}>
                       <img src={deleteIcon} alt="Eliminar imagen" />
                     </div>
                   </div>
