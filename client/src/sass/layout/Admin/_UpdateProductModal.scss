@@ -26,7 +26,7 @@
         }
         &.select{
             justify-content: center;
-            gap: 6rem;
+            gap: 10rem;
             .campo{
                 @include telefono{
                     width: 10rem;
@@ -48,7 +48,7 @@
         }
         &.checkbox-radio{
             justify-content: center;
-            gap: 6rem;
+            gap: 10rem;
             .campo{
                 @include telefono{
                     width: 10rem;
@@ -81,6 +81,7 @@
         font-family: $fuente_titulos;
         text-transform: uppercase;
         color: $principal;
+        font-size: 1.6rem;
     }
     input{
         width: 18rem;
@@ -110,6 +111,7 @@
             color: $blanco;
             font-family: $fuente_base;
             text-transform: none;
+            font-size: 1.3rem;
         }
         input{
             width: 1.5rem;
