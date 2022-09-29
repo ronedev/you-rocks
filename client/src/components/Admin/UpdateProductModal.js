@@ -4,8 +4,6 @@ import closeIcon from "../../images/icons/cerrar.png";
 
 const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
 
-  console.log(data)
-
   const handleChange = (e)=> {
     const {name, value} = e.target
     setModalData(prev => {return {...prev, [name]: value }})
@@ -16,13 +14,19 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
     setModalData(prev => {return {...prev, sizes: prev.sizes.includes(value) ? prev.sizes.filter(size => size !== value) : [...prev.sizes, value]}})
   }
 
+  const handleSubmit = e =>{
+    e.preventDefault()
+    console.log(data)
+  }
+
+  
   if (isOpened) {
     return (
       <section
         className={isOpened ? "modal-container visible" : "modal-container"}
       >
         <div className="modal-close" onClick={() => setIsOpened(false)}></div>
-        <form action={`http://localhost:5000/product/update/2312123123`} method='post' className="product-form">
+        <form onSubmit={handleSubmit} method='post' className="product-form">
           <div className="close-icon-container">
             <img
               src={closeIcon}
@@ -146,7 +150,7 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
             {data.images.length > 3 ? (
               <p>Hay un maximo de 4 imagenes por producto</p>
             ) : (
-              <input type="file" onChange={(e)=> console.log(e.target)}/>
+              <input type="file" accept="image/png,image/jpeg" multiple onChange={(e)=> console.log(e.target)}/>
             )}
           </div>
           <button className="btn btn-background">Actualizar producto</button>

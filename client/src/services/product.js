@@ -1,5 +1,18 @@
 import axios from 'axios'
 
+export async function updateProduct(data){
+  try {
+    const response = await axios({
+      url: `${process.env.REACT_APP_BASE_URL}/product/update/${data._id}`,
+      method: 'POST',
+      data
+    })
+    return response
+  } catch (error) {
+    return error
+  }
+}
+
 export async function apiCall(url){
   try {
     const response = await axios({
