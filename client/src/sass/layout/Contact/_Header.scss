@@ -19,7 +19,7 @@
 }
 
 
-.contact-form, .product-form{
+.contact-form{
     width: 100%;
     display: grid;
     gap: 1rem;
@@ -27,52 +27,54 @@
     @include telefono{
         justify-content: center;
     }
-    .campos-flex{
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        .imageContainer{
-            position: relative;
-            img{
-                width: 8rem;
-                height: 8rem;
-                object-fit: cover;
-            }
-            .delete{
-                width: 8rem;
-                height: 8rem;
-                position: absolute;
-                top: 0;
-                background-color: transparent;
-                cursor: pointer;
-                img{
-                    display: none;
-                }
-                &:hover{
-                    background-color: rgba($color: $negro, $alpha: .6);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    img{
-                        display: block;
-                        width: 3rem;
-                        height: auto;
-                    }
-                }
-            }
-        }
-        @include telefono{
-            display: grid;
-            gap: 1rem;
-            .campo{
-                width: 100%;
-            }
-        }
-    }
+    
     input{
         width: 25rem;
         @include telefono{
             width: 100%;            
+        }
+    }
+}
+
+.campos-flex{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .imageContainer{
+        position: relative;
+        img{
+            width: 8rem;
+            height: 8rem;
+            object-fit: cover;
+        }
+        .delete{
+            width: 8rem;
+            height: 8rem;
+            position: absolute;
+            top: 0;
+            background-color: transparent;
+            cursor: pointer;
+            img{
+                display: none;
+            }
+            &:hover{
+                background-color: rgba($color: $negro, $alpha: .6);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img{
+                    display: block;
+                    width: 3rem;
+                    height: auto;
+                }
+            }
+        }
+    }
+    @include telefono{
+        display: grid;
+        gap: 1rem;
+        .campo{
+            width: 100%;
         }
     }
 }

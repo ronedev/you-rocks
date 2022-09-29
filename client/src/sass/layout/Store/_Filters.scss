@@ -99,7 +99,9 @@
 }
 
 .agregar{
-    width: 100%;
+    @include telefono{
+        width: 100%;
+    }
     .btn{
         text-align: center;
     }
