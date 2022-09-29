@@ -3,13 +3,26 @@ import deleteIcon from "../../images/icons/delete.png";
 import closeIcon from "../../images/icons/cerrar.png";
 
 const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
+
+  console.log(data)
+
+  const handleChange = (e)=> {
+    const {name, value} = e.target
+    setModalData(prev => {return {...prev, [name]: value }})
+  }
+
+  const handleChangeSizes = (e)=>{
+    const {value} = e.target
+    setModalData(prev => {return {...prev, sizes: prev.sizes.includes(value) ? prev.sizes.filter(size => size !== value) : [...prev.sizes, value]}})
+  }
+
   if (isOpened) {
     return (
       <section
         className={isOpened ? "modal-container visible" : "modal-container"}
       >
         <div className="modal-close" onClick={() => setIsOpened(false)}></div>
-        <form action="" className="product-form">
+        <form action={`http://localhost:5000/product/update/2312123123`} method='post' className="product-form">
           <div className="close-icon-container">
             <img
               src={closeIcon}
@@ -21,20 +34,20 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
           <div className="campos-flex">
             <div className="campo">
               <label id="title">Titulo del producto</label>
-              <input type="text" name="title" value={data.title} />
+              <input type="text" name="title" value={data.title} onChange={handleChange}/>
             </div>
             <div className="campo">
               <label id="price">Precio</label>
-              <input type="number" name="price" value={data.price} />
+              <input type="number" name="price" value={data.price} onChange={handleChange}/>
             </div>
             <div className="campo">
               <label id="quantity">En stock</label>
-              <input type="number" name="quantity" value={data.quantity} />
+              <input type="number" name="quantity" value={data.quantity} onChange={handleChange}/>
             </div>
           </div>
           <div className="campo">
             <label id="description">Descripción</label>
-            <textarea name="description" id="description">
+            <textarea name="description" id="description" onChange={handleChange}>
               {data.description}
             </textarea>
           </div>
@@ -43,7 +56,7 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
           >
             <div className="campo select">
               <label id="category">Seleccione categoria</label>
-              <select name="category" id="category">
+              <select name="category" id="category" onChange={handleChange}>
                 <option value="chaqueta" selected={data.category === 'chaqueta' ? true : false}>Chaqueta</option>
                 <option value="abrigo" selected={data.category === 'abrigo' ? true : false}>Abrigo</option>
                 <option value="remera" selected={data.category === 'remera' ? true : false}>Remera</option>
@@ -56,26 +69,26 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
               <label id="gender">Seleccione el genero</label>
               <div className="campo-checkbox-radio">
                 <label id="female">Female</label>
-                <input type="radio" value="female" checked={data.gender === 'female' ? true : false}/>
+                <input type="radio" value="female" name="gender" checked={data.gender === 'female' ? true : false} onChange={handleChange}/>
               </div>
               <div className="campo-checkbox-radio">
                 <label id="male">Male</label>
-                <input type="radio" value="male" checked={data.gender === 'male' ? true : false}/>
+                <input type="radio" value="male" name="gender" checked={data.gender === 'male' ? true : false} onChange={handleChange}/>
               </div>
               <div className="campo-checkbox-radio">
                 <label id="unisex">Unisex</label>
-                <input type="radio" value="unisex" checked={data.gender === 'unisex' ? true : false}/>
+                <input type="radio" value="unisex" name="gender" checked={data.gender === 'unisex' ? true : false} onChange={handleChange}/>
               </div>
             </div>
             <div className="campo">
               <label id="offer">Esta en oferta</label>
               <div className="campo-checkbox-radio">
                 <label>Si</label>
-                <input type="radio" value={true} checked={data.offer === true ? true : false}/>
+                <input type="radio" value={true} name='offer' onChange={handleChange} checked={data.offer === true ? true : false}/>
               </div>
               <div className="campo-checkbox-radio">
                 <label>No</label>
-                <input type="radio" value={false} />
+                <input type="radio" value={false} name='offer' onChange={handleChange} />
               </div>
             </div>
           </div>
@@ -86,28 +99,28 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
               <label id="sizes">Talles disponibles</label>
               <div className="campo-checkbox-radio">
                 <label id="s">S</label>
-                <input type="checkbox" name="s" id="s" checked={data.sizes?.includes('s') ? true : false }/>
+                <input type="checkbox" value="s" id="s" checked={data.sizes?.includes('s') ? true : false } onChange={handleChangeSizes}/>
               </div>
               <div className="campo-checkbox-radio">
                 <label id="m">M</label>
-                <input type="checkbox" name="m" id="m" checked={data.sizes?.includes('m') ? true : false }/>
+                <input type="checkbox" value="m" id="m" checked={data.sizes?.includes('m') ? true : false } onChange={handleChangeSizes}/>
               </div>
               <div className="campo-checkbox-radio">
                 <label id="l">L</label>
-                <input type="checkbox" name="l" id="l" checked={data.sizes?.includes('l') ? true : false }/>
+                <input type="checkbox" value="l" id="l" checked={data.sizes?.includes('l') ? true : false } onChange={handleChangeSizes}/>
               </div>
               <div className="campo-checkbox-radio">
                 <label id="xl">XL</label>
-                <input type="checkbox" name="xl" id="xl" checked={data.sizes?.includes('xl') ? true : false }/>
+                <input type="checkbox" value="xl" id="xl" checked={data.sizes?.includes('xl') ? true : false } onChange={handleChangeSizes}/>
               </div>
               <div className="campo-checkbox-radio">
                 <label id="xxl">XXL</label>
-                <input type="checkbox" name="xxl" id="xxl" checked={data.sizes?.includes('xxl') ? true : false }/>
+                <input type="checkbox" value="xxl" id="xxl" checked={data.sizes?.includes('xxl') ? true : false } onChange={handleChangeSizes}/>
               </div>
             </div>
             <div className="campo select">
               <label id="enterprise">Seleccione empresa</label>
-              <select name="enterprise" id-="enterprise">
+              <select name="enterprise" id-="enterprise" onChange={handleChange}>
                 <option value="puma" selected={data.enterprise === 'puma' ? true : false}>Puma</option>
                 <option value="adidas" selected={data.enterprise === 'adidas' ? true : false}>Adidas</option>
                 <option value="nike" selected={data.enterprise === 'nike' ? true : false}>Nike</option>
@@ -133,7 +146,7 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
             {data.images.length > 3 ? (
               <p>Hay un maximo de 4 imagenes por producto</p>
             ) : (
-              <input type="file" placeholder="Subir otra imagen del producto" />
+              <input type="file" onChange={(e)=> console.log(e.target)}/>
             )}
           </div>
           <button className="btn btn-background">Actualizar producto</button>

@@ -6,6 +6,11 @@ exports.addNewProduct = async (req, res, next)=>{
     return next()
 }
 
+exports.updateProduct = async (req, res, next)=>{
+    console.log(req.body)
+    return next()
+}
+
 exports.getOneProduct = async (req, res)=>{
     const {id} = req.params
 
