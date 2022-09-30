@@ -36,7 +36,7 @@ router.get('/product/search', productController.searchProduct)
 router.post('/product/add', productController.addNewProduct)
 
 //Actualizar producto
-router.post('/product/update/:id', productController.updateProduct)
+router.post('/product/update/:id', productController.uploadImg, productController.updateProduct)
 
 //USER CONTROLLERS
 router.post('/signup', validateUser, userController.signup)

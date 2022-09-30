@@ -1,5 +1,48 @@
 const mongoose = require('mongoose')
 const Product = mongoose.model('Product')
+const multer = require('multer')
+const shortid = require('shortid')
+
+const multerConfig = {
+    limits: { fileSize: 1000000000},
+    storage: fileStorage = multer.diskStorage({
+        destination: (req, file, callback)=>{
+            switch(req.body.gender){
+                case 'female':
+                    callback(null, __dirname + '../../../client/src/images/products/female')
+                    break
+                case 'male':
+                    callback(null, __dirname + '../../../client/src/images/products/male')
+                    break
+                case 'unisex':
+                    callback(null, __dirname + '../../../client/src/images/products/unisex')
+                    break
+                default:
+                    callback(null, __dirname + '../../../client/src/images/products/unisex')
+            }
+        },
+        filename: (req, file, callback)=>{
+            const extension = file.mimetype.split('/')[1]
+            callback(null, `${shortid.generate()}.${extension}`)
+        }
+    })
+}
+
+const upload = multer(multerConfig).array('newImage')
+
+exports.uploadImg = (req, res, next)=>{
+    upload(req, res, function(error){
+        if(error){
+            if(error instanceof multer.MulterError){
+                if(error.code === 'LIMIT_FILE_SIZE'){
+                    throw new error('El archivo seleccionado es demasiado grande. Maximo 100kb')
+                }
+            }
+        }else{
+            return next()
+        }
+    })
+}
 
 exports.addNewProduct = async (req, res, next)=>{
     console.log(req.body)
@@ -7,7 +50,7 @@ exports.addNewProduct = async (req, res, next)=>{
 }
 
 exports.updateProduct = async (req, res, next)=>{
-    console.log(req.body)
+    const {id} = req.params
     return next()
 }
 

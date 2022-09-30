@@ -1,6 +1,7 @@
 import React from "react";
 import deleteIcon from "../../images/icons/delete.png";
 import closeIcon from "../../images/icons/cerrar.png";
+import { updateProduct } from "../../services/product";
 
 const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
 
@@ -14,11 +15,19 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
     setModalData(prev => {return {...prev, sizes: prev.sizes.includes(value) ? prev.sizes.filter(size => size !== value) : [...prev.sizes, value]}})
   }
 
-  const handleSubmit = e =>{
-    e.preventDefault()
-    console.log(data)
+  const handleChangeFiles = (e)=>{
+    const {files} = e.target
+    // for (let i = 0; i < files.length; i++) {
+    //   newImages.push(files[i])
+    // }
+    setModalData(prev => {return {...prev, newImage: files[0]}})
   }
 
+  const handleSubmit = async e =>{
+    e.preventDefault()
+    const res = await updateProduct(data)
+    console.log(res)
+  }
   
   if (isOpened) {
     return (
@@ -26,7 +35,7 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
         className={isOpened ? "modal-container visible" : "modal-container"}
       >
         <div className="modal-close" onClick={() => setIsOpened(false)}></div>
-        <form onSubmit={handleSubmit} method='post' className="product-form">
+        <form onSubmit={handleSubmit} method='post' className="product-form" encType="multipart/form-data">
           <div className="close-icon-container">
             <img
               src={closeIcon}
@@ -150,7 +159,7 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
             {data.images.length > 3 ? (
               <p>Hay un maximo de 4 imagenes por producto</p>
             ) : (
-              <input type="file" accept="image/png,image/jpeg" multiple onChange={(e)=> console.log(e.target)}/>
+              <input type="file" name='newImage' accept="image/png,image/jpeg" onChange={handleChangeFiles}/>
             )}
           </div>
           <button className="btn btn-background">Actualizar producto</button>
