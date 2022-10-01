@@ -9,21 +9,23 @@ const multerConfig = {
         destination: (req, file, callback)=>{
             switch(req.body.gender){
                 case 'female':
-                    callback(null, __dirname + '../../../client/src/images/products/female')
+                    callback(null,  __dirname + '../../../client/public/images/products/female/')
                     break
                 case 'male':
-                    callback(null, __dirname + '../../../client/src/images/products/male')
+                    callback(null, __dirname + '../../../client/public/images/products/male/')
                     break
                 case 'unisex':
-                    callback(null, __dirname + '../../../client/src/images/products/unisex')
+                    callback(null, __dirname + '../../../client/public/images/products/unisex/')
                     break
                 default:
-                    callback(null, __dirname + '../../../client/src/images/products/unisex')
+                    callback(null, __dirname + '../../../client/public/images/products/unisex/')
             }
         },
         filename: (req, file, callback)=>{
             const extension = file.mimetype.split('/')[1]
-            callback(null, `${shortid.generate()}.${extension}`)
+            const filename = `${shortid.generate()}.${extension}`
+            req.filename = filename
+            callback(null, filename)
         }
     })
 }
@@ -51,6 +53,32 @@ exports.addNewProduct = async (req, res, next)=>{
 
 exports.updateProduct = async (req, res, next)=>{
     const {id} = req.params
+    try {
+        const imageURL = req.filename ? `/images/products/${req.body.gender}/${req.filename}` : null
+        let {title, price, description, category, createdAt, enterprise, gender, images, offer, quantity, sizes} = req.body
+        let productUpdate = {
+            title,
+            price,
+            description,
+            category,
+            createdAt,
+            enterprise,
+            gender,
+            images: req.filename ? (images + `,${imageURL}`).split(',') : images.split(','),
+            offer,
+            quantity,
+            sizes: sizes.split(',')
+        }
+        const product = await Product.findByIdAndUpdate(id, productUpdate)
+        if(product){
+            res.status(200).json({message: 'Se ha actualizado correctamente su producto'})
+        }else{
+            return res.status(330).json({message: 'Ocurrio un problema al actualizar su producto'})
+        }
+    } catch (error) {
+        console.log(error)
+        return res.status(error.code).send(error.message)
+    }
     return next()
 }
 

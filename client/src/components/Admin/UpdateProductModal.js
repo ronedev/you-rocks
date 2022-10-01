@@ -159,7 +159,7 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
             {data.images.length > 3 ? (
               <p>Hay un maximo de 4 imagenes por producto</p>
             ) : (
-              <input type="file" name='newImage' accept="image/png,image/jpeg" onChange={handleChangeFiles}/>
+              <input type="file" name='newImage' accept="image/png,image/jpeg,image/webp" onChange={handleChangeFiles}/>
             )}
           </div>
           <button className="btn btn-background">Actualizar producto</button>

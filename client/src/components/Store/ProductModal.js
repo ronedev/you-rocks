@@ -31,6 +31,7 @@ const ProductModal = ({ isOpened, setIsOpened, data }) => {
     }
   }, [cartItems, data]);
 
+
   if (isOpened) {
     return (
       <section
