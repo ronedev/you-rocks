@@ -12,6 +12,7 @@ export async function updateProduct(data){
     form.append('gender',  data.gender)
     form.append('images',  data.images)
     form.append('newImage',  data.newImage)
+    data.deletedImages && form.append('deletedImages', data.deletedImages)
     form.append('offer',  data.offer)
     form.append('quantity',  data.quantity)
     form.append('sizes',  data.sizes)

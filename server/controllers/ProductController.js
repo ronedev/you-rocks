@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Product = mongoose.model('Product')
 const multer = require('multer')
 const shortid = require('shortid')
+const fs = require('fs').promises
 
 const multerConfig = {
     limits: { fileSize: 1000000000},
@@ -70,6 +71,13 @@ exports.updateProduct = async (req, res, next)=>{
             sizes: sizes.split(',')
         }
         const product = await Product.findByIdAndUpdate(id, productUpdate)
+        
+        if(req.body.deletedImages){
+            fs.unlink(__dirname + '../../../client/public' + req.body.deletedImages)
+                .then(res => console.log('File removed'))
+                .catch(err => console.log(`Error al eliminar el archivo ${err}`))
+        }
+
         if(product){
             res.status(200).json({message: 'Se ha actualizado correctamente su producto'})
         }else{

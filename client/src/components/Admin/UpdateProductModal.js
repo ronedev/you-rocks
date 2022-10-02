@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import deleteIcon from "../../images/icons/delete.png";
 import closeIcon from "../../images/icons/cerrar.png";
 import { updateProduct } from "../../services/product";
 
 const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
+  const [deletedImages, setDeletedImages] = useState([])
 
   const handleChange = (e)=> {
     const {name, value} = e.target
@@ -25,6 +26,10 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
 
   const handleSubmit = async e =>{
     e.preventDefault()
+    if(deletedImages.length > 0){
+      setModalData(prev => {return {...prev, 'deletedImages': deletedImages}})
+    }
+    console.log(data)
     const res = await updateProduct(data)
     console.log(res)
   }
@@ -149,7 +154,10 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
                 <>
                   <div className="imageContainer">
                     <img src={image} alt="Imagen del producto" />
-                    <div className="delete" onClick={()=> setModalData(prev => {return {...prev, images: prev.images.filter(img => img !== image)}})}>
+                    <div className="delete" onClick={()=> {
+                      setDeletedImages(prev => [...prev, image])
+                      setModalData(prev => {return {...prev, images: prev.images.filter(img => img !== image), deletedImages: [...deletedImages, image]}})
+                    }}>
                       <img src={deleteIcon} alt="Eliminar imagen" />
                     </div>
                   </div>
