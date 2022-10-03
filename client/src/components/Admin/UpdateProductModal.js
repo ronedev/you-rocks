@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Swal from 'sweetalert2';
 import deleteIcon from "../../images/icons/delete.png";
 import closeIcon from "../../images/icons/cerrar.png";
 import { updateProduct } from "../../services/product";
@@ -18,9 +19,6 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
 
   const handleChangeFiles = (e)=>{
     const {files} = e.target
-    // for (let i = 0; i < files.length; i++) {
-    //   newImages.push(files[i])
-    // }
     setModalData(prev => {return {...prev, newImage: files[0]}})
   }
 
@@ -29,9 +27,16 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
     if(deletedImages.length > 0){
       setModalData(prev => {return {...prev, 'deletedImages': deletedImages}})
     }
-    console.log(data)
     const res = await updateProduct(data)
-    console.log(res)
+    if(res.status === 200){
+      setIsOpened(false)
+      Swal.fire({
+        icon: 'success',
+        position: 'top',
+        text: 'Se ha actualizado el producto con exito',
+        confirmButtonText: 'Aceptar'
+      }).then(() => window.location.reload())
+    }
   }
   
   if (isOpened) {
@@ -102,11 +107,11 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
               <label id="offer">Esta en oferta</label>
               <div className="campo-checkbox-radio">
                 <label>Si</label>
-                <input type="radio" value={true} name='offer' onChange={handleChange} checked={data.offer === true ? true : false}/>
+                <input type="radio" value={true} name='offer' onChange={handleChange} checked={data.offer === true || data.offer === 'true' ? true : false}/>
               </div>
               <div className="campo-checkbox-radio">
                 <label>No</label>
-                <input type="radio" value={false} name='offer' onChange={handleChange} />
+                <input type="radio" value={false} name='offer' onChange={handleChange} checked={data.offer === false || data.offer === 'false' ? true : false}/>
               </div>
             </div>
           </div>
@@ -155,8 +160,19 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
                   <div className="imageContainer">
                     <img src={image} alt="Imagen del producto" />
                     <div className="delete" onClick={()=> {
-                      setDeletedImages(prev => [...prev, image])
-                      setModalData(prev => {return {...prev, images: prev.images.filter(img => img !== image), deletedImages: [...deletedImages, image]}})
+                      Swal.fire({
+                        title: '¿Desea eliminar la imagen?',
+                        text: 'Si elimina la imagen se eliminara de forma permanente, ¿esta seguro de hacerlo?',
+                        confirmButtonText: 'Eliminar',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        icon: 'warning',
+                      }).then(result=>{
+                        if(result.isConfirmed){
+                          setDeletedImages(prev => [...prev, image])
+                          setModalData(prev => {return {...prev, images: prev.images.filter(img => img !== image), deletedImages: [...deletedImages, image]}})
+                        }
+                      })
                     }}>
                       <img src={deleteIcon} alt="Eliminar imagen" />
                     </div>
