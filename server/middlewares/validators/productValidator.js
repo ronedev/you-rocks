@@ -32,5 +32,17 @@ exports.validateProduct = [
     check('enterprise')
     .isEmpty()
     .withMessage('Debe seleccionar una marca'),
-    
+    check('sizes')
+    .isEmpty()
+    .withMessage('Debe seleccionar al menos un talle disponible'),
+    check('images')
+    .isEmpty()
+    .isLength({min: 2, max:4})
+    .withMessage('Debe cargar al menos 2 imagenes por producto'),
+    (req, res, next)=>{
+        const errors = validationResult(req);
+        if (!errors.isEmpty())
+        return res.status(422).json({ errors: errors.array() });
+        next();
+    }
 ]

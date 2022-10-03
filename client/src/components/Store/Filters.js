@@ -5,6 +5,8 @@ import downArrowIcon from "../../images/icons/down-arrow.png";
 import reloadIcon from "../../images/icons/reload.png";
 import { ProductContext } from "../../context/ProductsContext";
 import { UserContext } from "../../context/UserContext";
+import CreateProductModal from "../Admin/CreateProductModal";
+import useModal from "../../hooks/useModal";
 
 const Filters = () => {
   const [filter, setFilter] = useState(false);
@@ -57,8 +59,11 @@ const Filters = () => {
     setSearchValue(value)
   }
 
+  const {isOpened, setIsOpened, modalData, setModalData} = useModal()
+
   return (
     <>
+      <CreateProductModal isOpened={isOpened} setIsOpened={setIsOpened} setModalData={setModalData} data={modalData}/>
       <div className="filters-container">
             <button>
               <img
@@ -70,7 +75,7 @@ const Filters = () => {
             </button>
         {adminUser && (
           <div className="agregar">
-            <button className="btn btn-background">Agregar producto</button>
+            <button className="btn btn-background" onClick={()=> setIsOpened(true)}>Agregar producto</button>
           </div>
         )}
         <div className="filter">

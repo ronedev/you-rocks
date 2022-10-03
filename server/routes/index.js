@@ -2,6 +2,7 @@ const express = require('express')
 const productController = require('../controllers/ProductController.js')
 const userController = require('../controllers/UserController.js')
 const {validateUser} = require('../middlewares/validators/userValidator.js')
+const {validateProduct} = require('../middlewares/validators/productValidator.js')
 
 const router = express.Router()
 
@@ -33,7 +34,7 @@ router.get('/product/get-random', productController.getRandomProduct)
 router.get('/product/search', productController.searchProduct)
 
 //Agregar producto
-router.post('/product/add', productController.addNewProduct)
+router.post('/product/add', validateProduct, productController.addNewProduct)
 
 //Actualizar producto
 router.post('/product/update/:id', productController.uploadImg, productController.updateProduct)
