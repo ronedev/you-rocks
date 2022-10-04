@@ -1,5 +1,34 @@
 import axios from 'axios'
 
+export async function addProduct(data){
+  try {
+    // let form = new FormData()
+    // form.append('title',  data.title)
+    // form.append('price',  data.price)
+    // form.append('description',  data.description)
+    // form.append('category',  data.category)
+    // form.append('createdAt',  data.createdAt)
+    // form.append('enterprise',  data.enterprise)
+    // form.append('gender',  data.gender)
+    // form.append('images',  data.images)
+    // form.append('newImage',  data.newImage)
+    // data.deletedImages && form.append('deletedImages', data.deletedImages)
+    // form.append('offer',  data.offer)
+    // form.append('quantity',  data.quantity)
+    // form.append('sizes',  data.sizes)
+    // form.append('_id',  data._id)
+    const response = await axios({
+      // process.env.REACT_APP_BASE_URL
+      url: `http://localhost:5000/product/new`,
+      method: 'POST',
+      data: data
+    })
+    return response
+  } catch (error) {
+    return error
+  }
+}
+
 export async function updateProduct(data){
   try {
     let form = new FormData()

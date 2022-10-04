@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Swal from 'sweetalert2';
 import deleteIcon from "../../images/icons/delete.png";
 import closeIcon from "../../images/icons/cerrar.png";
-import { updateProduct } from "../../services/product";
+import { addProduct } from "../../services/product";
 
 const CreateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
     const [deletedImages, setDeletedImages] = useState([])
@@ -24,18 +24,26 @@ const CreateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
     
       const handleSubmit = async e =>{
         e.preventDefault()
-        const res = await updateProduct(data)
+        const res = await addProduct(data)
         if(res.status === 200){
           setIsOpened(false)
           Swal.fire({
             icon: 'success',
             position: 'top',
-            text: 'Se ha actualizado el producto con exito',
+            text: 'Se ha agregado el producto con exito',
             confirmButtonText: 'Aceptar'
           }).then(() => window.location.reload())
+        }else{
+            console.log(res)
+          Swal.fire({
+              icon: 'error',
+              position: 'top',
+              text: res.message,
+              confirmButtonText: 'Aceptar'
+            })
         }
       }
-      
+
       if (isOpened) {
         return (
           <section
