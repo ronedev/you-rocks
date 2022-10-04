@@ -34,11 +34,10 @@ const CreateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
             confirmButtonText: 'Aceptar'
           }).then(() => window.location.reload())
         }else{
-            console.log(res)
+          const errors = res.response.data.errors.map(error => error.msg )
           Swal.fire({
               icon: 'error',
-              position: 'top',
-              text: res.message,
+              html: errors.map(error => `<p class="error alert">${error}</p>` ),
               confirmButtonText: 'Aceptar'
             })
         }
