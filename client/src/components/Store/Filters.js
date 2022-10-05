@@ -76,7 +76,7 @@ const Filters = () => {
         {adminUser && (
           <div className="agregar">
             <button className="btn btn-background" onClick={()=>{
-              setModalData({title: '', price: 0, quantity: 0, description: '', category: '', gender: '', sizes: [], offer: false, enterprise: '', images:[] })
+              setModalData({title: '', price: 0, quantity: 0, description: '', category: '', gender: '', sizes: [], offer: false, enterprise: '', images:[], newImage: [] })
               setIsOpened(true)
             }}>Agregar producto</button>
           </div>

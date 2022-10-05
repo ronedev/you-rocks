@@ -19,10 +19,13 @@ const CreateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
     
       const handleChangeFiles = (e)=>{
         const {files} = e.target
-        setModalData(prev => {return {...prev, newImage: files[0]}})
+        const arrayFiles = Array.from(files)
+        // for(let i = 0; i < files.length; i++){console.log(files[i])}
+        setModalData(prev => {return {...prev, newImage: arrayFiles}})
       }
     
       const handleSubmit = async e =>{
+        console.log(data)
         e.preventDefault()
         const res = await addProduct(data)
         if(res.status === 200){
@@ -42,7 +45,6 @@ const CreateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
             })
         }
       }
-
       if (isOpened) {
         return (
           <section
@@ -187,7 +189,7 @@ const CreateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
                 {data?.images?.length > 3 ? (
                   <p>Hay un maximo de 4 imagenes por producto</p>
                 ) : (
-                  <input type="file" name='newImage' accept="image/png,image/jpeg,image/webp" onChange={handleChangeFiles}/>
+                  <input type="file" name='newImage' accept="image/png,image/jpeg,image/webp" multiple onChange={handleChangeFiles}/>
                 )}
               </div>
               <button className="btn btn-background">Crear producto</button>

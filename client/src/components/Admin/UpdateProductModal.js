@@ -24,6 +24,7 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
 
   const handleSubmit = async e =>{
     e.preventDefault()
+    console.log(data)
     if(deletedImages.length > 0){
       setModalData(prev => {return {...prev, 'deletedImages': deletedImages}})
     }
@@ -37,8 +38,7 @@ const UpdateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
         confirmButtonText: 'Aceptar'
       }).then(() => window.location.reload())
     }
-  }
-  
+  }  
   if (isOpened) {
     return (
       <section

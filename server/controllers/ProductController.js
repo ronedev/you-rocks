@@ -32,6 +32,7 @@ const multerConfig = {
 }
 
 const upload = multer(multerConfig).array('newImage')
+const uploadNewImages = multer(multerConfig).array('newImage')
 
 exports.uploadImg = (req, res, next)=>{
     upload(req, res, function(error){
@@ -47,8 +48,29 @@ exports.uploadImg = (req, res, next)=>{
     })
 }
 
-exports.addNewProduct = async (req, res, next)=>{
+exports.uploadNewImg = (req, res, next)=>{
     console.log(req.body)
+    uploadNewImages(req, res, function(error){
+        if(error){
+            if(error instanceof multer.MulterError){
+                if(error.code === 'LIMIT_FILE_SIZE'){
+                    throw new error('El archivo seleccionado es demasiado grande. Maximo 100kb')
+                }
+            }
+        }else{
+            return next()
+        }
+    })
+}
+
+exports.addNewProduct = async (req, res, next)=>{
+    console.log(req.files)
+    try {
+        const imageURL = req.filename ? `/images/products/${req.body.gender}/${req.filename}` : null
+        let {title, price, description, category, createdAt, enterprise, gender, images, offer, quantity, sizes} = req.body
+    } catch (error) {
+        
+    }
     return next()
 }
 

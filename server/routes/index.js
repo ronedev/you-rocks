@@ -34,7 +34,7 @@ router.get('/product/get-random', productController.getRandomProduct)
 router.get('/product/search', productController.searchProduct)
 
 //Agregar producto
-router.post('/product/new', validateProduct, productController.addNewProduct)
+router.post('/product/new',  productController.uploadNewImg, validateProduct, productController.addNewProduct)
 
 //Actualizar producto
 router.post('/product/update/:id', productController.uploadImg, productController.updateProduct)
