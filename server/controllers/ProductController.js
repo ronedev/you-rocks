@@ -64,14 +64,27 @@ exports.uploadNewImg = (req, res, next)=>{
 }
 
 exports.addNewProduct = async (req, res, next)=>{
-    console.log(req.files)
     try {
         const imageURL = req.filename ? `/images/products/${req.body.gender}/${req.filename}` : null
-        let {title, price, description, category, createdAt, enterprise, gender, images, offer, quantity, sizes} = req.body
+        let {title, price, description, category, enterprise, gender, images, offer, quantity, sizes} = req.body
+        let product = {
+            title,
+            price,
+            description,
+            category,
+            enterprise,
+            gender,
+            images: req.files ? req.files.map(file => `/images/products/${gender}/${file.filename}`) : images,
+            offer,
+            quantity,
+            sizes
+        }
+        Product.create(product)
+            .then(response =>  res.status(200).json({'message': 'Se agrego el producto correctamente'}))
+            .catch(err => res.status(422).json({'message': 'Ocurrio un problema al agregar el producto'}))
     } catch (error) {
-        
+        return res.status(error.code).send(error.message)
     }
-    return next()
 }
 
 exports.updateProduct = async (req, res, next)=>{
