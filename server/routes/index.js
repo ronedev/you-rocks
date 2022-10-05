@@ -39,6 +39,9 @@ router.post('/product/new',  productController.uploadNewImg, validateProduct, pr
 //Actualizar producto
 router.post('/product/update/:id', productController.uploadImg, productController.updateProduct)
 
+//Eliminar producto
+router.delete('/product/delete/:id', productController.deleteProduct)
+
 //USER CONTROLLERS
 router.post('/signup', validateUser, userController.signup)
 

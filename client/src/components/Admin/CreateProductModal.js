@@ -20,12 +20,10 @@ const CreateProductModal = ({ isOpened, setIsOpened, data, setModalData }) => {
       const handleChangeFiles = (e)=>{
         const {files} = e.target
         const arrayFiles = Array.from(files)
-        // for(let i = 0; i < files.length; i++){console.log(files[i])}
         setModalData(prev => {return {...prev, newImage: arrayFiles}})
       }
     
       const handleSubmit = async e =>{
-        console.log(data)
         e.preventDefault()
         const res = await addProduct(data)
         if(res.status === 200){

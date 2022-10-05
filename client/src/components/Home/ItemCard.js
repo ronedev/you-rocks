@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
+import Swal from 'sweetalert2';
 import { CartContext } from "../../context/CartContext";
 import { UserContext } from "../../context/UserContext";
+import { deleteProduct } from "../../services/product";
 
 const ItemCard = ({ item, setIsOpened, setModalData }) => {
   const { adminUser } = useContext(UserContext);
@@ -62,6 +64,37 @@ const ItemCard = ({ item, setIsOpened, setModalData }) => {
                 }}
               >
                 Modificar producto
+              </button>
+              <button
+                className="btn btn-background"
+                style={{ backgroundColor: "red", marginTop: "1rem" }}
+                onClick={()=>{
+                  Swal.fire({
+                    icon: 'warning',
+                    title: '¿Desea elminar el producto?',
+                    text: 'Si elimina este producto no se podra recuperar luego ¿Esta seguro?',
+                    confirmButtonText: 'Eliminar'
+                  }).then( async (result) =>{
+                    if(result.isConfirmed){
+                      const response = await deleteProduct(item._id)
+                      if(response.status === 200){
+                        Swal.fire({
+                          icon: 'success',
+                          text: 'Se ha eliminado el producto con exito',
+                          confirmButtonText: 'Aceptar'
+                        }).then(() => window.location.reload())
+                      }else{
+                        Swal.fire({
+                          icon: 'error',
+                          text: response.message,
+                          confirmButtonText: 'Aceptar'
+                        })
+                      }
+                    }
+                  })
+                }}
+              >
+                Eliminar producto
               </button>
             </>
           ) : (

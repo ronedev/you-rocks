@@ -116,13 +116,28 @@ exports.updateProduct = async (req, res, next)=>{
         if(product){
             res.status(200).json({message: 'Se ha actualizado correctamente su producto'})
         }else{
-            return res.status(330).json({message: 'Ocurrio un problema al actualizar su producto'})
+            return res.status(330).json({message: 'Ocurrio un problema al actualizar su producto. Intentelo nuevamente.'})
         }
     } catch (error) {
         console.log(error)
         return res.status(error.code).send(error.message)
     }
     return next()
+}
+
+exports.deleteProduct = async(req, res)=>{
+    const {id} = req.params
+    try{
+        const response = await Product.deleteOne({_id: id})
+        if(response.acknowledged){
+            res.status(200).json({'message': 'Se ha elminado el producto correctamente'})
+        }else{
+            res.status(432).json({'message': 'Ha ocurrido un problema al intentar eliminar el producto. Intentelo nuevamente.'})
+        }
+    }catch(err){
+        console.log(err)
+        res.status(432).json({'message': 'Ha ocurrido un problema al intentar eliminar el producto. Intentelo nuevamente.'})
+    }
 }
 
 exports.getOneProduct = async (req, res)=>{

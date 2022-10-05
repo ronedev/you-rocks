@@ -58,6 +58,19 @@ export async function updateProduct(data){
   }
 }
 
+export async function deleteProduct(id){
+  try{
+      // process.env.REACT_APP_BASE_URL
+    const response = await axios({
+      url: `http://localhost:5000/product/delete/${id}`,
+      method: 'DELETE'
+    })
+    return response
+  }catch(error){
+    return error
+  }
+}
+
 export async function apiCall(url){
   try {
     const response = await axios({
