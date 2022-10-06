@@ -15,6 +15,7 @@ const Navbar = () => {
     const res = await logoutUser();
     if (res.success) {
       setActualUser(null);
+      window.location.reload()
     }
   }
 
@@ -34,7 +35,7 @@ const Navbar = () => {
               <a href="/store">Products</a>
               <a href="/about">About Us</a>
               <a href="/api">API</a>
-              {actualUser && <a href="/admin">Admin</a>}
+              {adminUser && <a href="/admin">Admin</a>}
             </ul>
             {actualUser ? (
               <div className="authentication">
